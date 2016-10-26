@@ -17,6 +17,8 @@
           <th>Photo</th>
           <th>Title</th>
           <th>Body</th>
+          <th>View Posts</th>
+          <th>View Comments</th>
           <th>Created_at</th>
           <th>Updated_at</th>
       </tr>
@@ -28,10 +30,12 @@
           <tr class="success">
               <td>{{$post->id}}</td>
               <td> <a href="{{route('admin.posts.edit',$post->id)}}" class="hr"> {{$post->user->name}}</a></td>
-              <td>{{$post->category?$post->category->name:'unctagorized'}}</td>
+              <td>{{$post->category ? $post->category->name:'unctagorized'}}</td>
               <td><img height="50" src="{{$post->photo ? $post->photo->file:'/images/1477024514HD-White-Pigeon.jpg'}}" alt="" class="src"></td>
               <td>{{$post->title}}</td>
-              <td>{{$post->body}}</td>
+              <td>{{str_limit($post->body,20)}}</td>
+              <td><a href="{{route('home.post',$post->id)}}"> View Post!</a>  </td>
+              <td><a href="{{route('admin.comments.show',$post->id)}}">View comments</a></td>
               <td>{{$post->created_at->diffForHumans()}}</td>
               <td>{{$post->updated_at->diffForHumans()}}</td>
           </tr>

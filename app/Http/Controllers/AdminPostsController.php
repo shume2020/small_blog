@@ -110,16 +110,13 @@ class AdminPostsController extends Controller
     {
         //
         $input=$request->all();
-        if($file=$request->file('photo_id')){
-            $name=time().$file->getClientOriginalName();
-            $file->move('images',$name);
-            $photo = Photo::create(['file'=>$name]);
-            $input['photo_id']=$photo-id;
-
-
-
-
-        }
+//        if($file=$request->file('photo_id')){
+//            $name=time().$file->getClientOriginalName();
+//            $file->move('images',$name);
+//            $photo = Photo::create(['file'=>$name]);
+//            $input['photo_id']=$photo->id;
+//
+//        }
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
         return redirect('/admin/posts');
@@ -140,5 +137,15 @@ class AdminPostsController extends Controller
         Session::flash('Deleted_post','The user has been deleted');
 
         return redirect('/admin/posts');
+    }
+
+
+    public function post($id){
+
+        $post=Post::findOrfail($id);
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+
+        return view('post',compact('post','comments'));
     }
 }
