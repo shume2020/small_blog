@@ -15,4 +15,13 @@ class Photo extends Model
 
 
     //
+    public  function posts(){
+
+        return $this->belongsTo('App\Post');
+    }
+
+    public  function users(){
+
+        return $this->belongsTo('App\User');
+    }
 }

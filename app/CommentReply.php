@@ -14,7 +14,7 @@ class CommentReply extends Model
         'author',
         'email',
         'body',
-//        'photo',
+        'photo_id',
         'is_active'
 
 
@@ -26,6 +26,6 @@ class CommentReply extends Model
 
 
 
-        return$this->belongsTo('App\Comment');
+        return $this->belongsTo('App\Comment');
     }
 }

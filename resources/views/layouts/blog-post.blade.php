@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="#">Wel Come!</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -98,25 +98,25 @@
 
 
 
-                            {{--<li><a href="#">{{$post->category->name}}</a>--}}
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">{{$post->category->name}}</a>
                             </li>
                         </ul>
                     </div>
@@ -126,8 +126,8 @@
 
             <!-- Side Widget Well -->
             <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h4>Date</h4>
+                <p>{{\Carbon\Carbon::createFromDate()}}</p>
             </div>
 
         </div>
