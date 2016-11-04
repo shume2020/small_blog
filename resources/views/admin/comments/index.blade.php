@@ -6,7 +6,7 @@
     @if(count($comments)>0)
 
         <h1>The comments Page!</h1>
-    <table class="table">
+     <table class="table">
         <thead>
           <tr>
             <th>Id</th>
@@ -27,9 +27,9 @@
             <td>{{$comment->email}}</td>
               <td>{{str_limit($comment->body,10)}}</td>
               <td>{{$comment->created_at->diffForHumans()}}</td>
-              {{--<td>{{$comment->updated_at->diffForHumans()}}</td>--}}
+              <td>{{$comment->updated_at->diffForHumans()}}</td>
               <td><a href="{{route('home.post',$comment->post->id)}}"> View Post!</a>  </td>
-              <td><a href="{{route('admin.comments.replies.show',$comment->id)}}" class="href">View Reply</a></td>
+              <td><a href="{{route('admin.comments.replies.show',$comment->id)}}" >View Reply</a></td>
               <td>
                   
                   
@@ -73,12 +73,12 @@
               </td>
 
           </tr>
-         @endforeach
+        @endforeach
         </tbody>
       </table>
 
 
-        @else
+    @else
 
         <h1>No Comments</h1>
     @endif

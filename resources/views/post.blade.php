@@ -22,7 +22,7 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" height="10"  width="500" src="{{$post->photo? $post->photo->file : '/images/1477024514HD-White-Pigeon.jpg'}}" alt="">
+    <img class="img-responsive" src="{{URL::to('/images/' . $post->photo->file)}}" alt="">
 
     <hr>
 
@@ -76,82 +76,83 @@
 
 
     <!-- Posted Comments -->
-@if(count($comments)>0)
-    @foreach($comments as $comment)
+   @if(count($comments)>0)
+       @foreach($comments as $comment)
     <!-- Comment -->
-    <div class="media">
-        <a class="pull-left" href="#">
-            <img class="media-object" height="50" src="/images/1477024514HD-White-Pigeon.jpg" alt="">
-        </a>
-        <div class="media-body">
-            <h5 class="media-heading">{{$comment->title}} By {{$comment->author}}
-                <small>{{$comment->updated_at}}</small>
+         <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" height="50" src={{URL::to('/images/' . $post->photo->file)}} alt="">
+            </a>
+            <div class="media-body">
+                <h5 class="media-heading">{{$comment->title}} By {{$comment->author}}
+                    <small>{{$comment->updated_at}}</small>
 
-            </h5>
-            <p>{{$comment->body}}</p>
+                </h5>
+                <p>{{$comment->body}}</p>
 
-            @if(count($comment->replies)>0)
+                @if(count($comment->replies)>0)
 
-                @foreach($comment->replies as $reply)
+                    @foreach($comment->replies as $reply)
 
-            <!-- Nested Comment -->
-                            <div id="nested-comment">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" height="40" src="/images/1477370871images.jpeg" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{$reply->author}}
-                                        <small>{{$reply->updated_at}}</small>
-                                    </h4>
-                                        <p>{{$reply->body}}</p>
-                                </div>
+                        <!-- Nested Comment -->
+                        @if($reply->is_active == 1)
 
-                                <div class="comment-reply-container">
-                                    <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                        <div id="nested-comment" class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" height="40" src={{URL::to('/images/' . $user->photo->file)}} alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{$reply->author}}
+                                    <small>{{$reply->created_at->diffForHumans()}}</small>
+                                </h4>
+                                <p>{{$reply->body}}</p>
+                            </div>
 
-                                    <div class="comment-reply" >
+                            <div class="comment-reply-container">
+                                <button class="toggle-reply btn btn-primary pull-right">Reply</button>
 
-                                            {!! Form::open(['method'=>'POST','action'=>'CommentRepliesController@createReply']) !!}
-                                                <div class="form-group">
-                                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                                    {{--<input type="hidden" name="author" value="{{$comment->user->name}}">--}}
-                                                    {{--<input type="hidden" name="author" value="{{$comment->author}}">--}}
-                                                    {!! Form::label('body','Body:') !!}
-                                                    {!! Form::textarea('body',null,['class'=>'form-control','rows'=>1]) !!}
+                                <div class="comment-reply col-sm-6"  >
+                                    {!! Form::open(['method'=>'POST','action'=>'CommentRepliesController@createReply']) !!}
+                                    <div class="form-group">
 
-                                                </div>
-                                                <div class="form-group">
-
-                                                    {!! Form::submit('submit',['class'=>'btn btn-primary']) !!}
-
-                                                 </div>
-                                            {!! Form::close() !!}
+                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                        {{--<input type="hidden" name="author" value="{{$comment->user->name}}">--}}
+                                        {{--<input type="hidden" name="author" value="{{$comment->author}}">--}}
+                                        {!! Form::label('body','Body:') !!}
+                                        {!! Form::textarea('body',null,['class'=>'form-control','rows'=>1]) !!}
                                     </div>
+
+                                    <div class="form-group">
+
+                                        {!! Form::submit('submit',['class'=>'btn btn-primary']) !!}
+
+                                    </div>
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
 
-                 @endforeach
-             @endif
-            <!-- End Nested Comment -->
-        </div>
-    </div>
-    @endforeach
+
+                        </div>
+                            @endif
+                        @endforeach
+
+
+
+                  {{--@else--}}
+                    {{--<h1>No comments</h1>--}}
+
+
+
+                   @endif
+
+                <!-- End Nested Comment -->
+            </div>
+         </div>
+        @endforeach
 @endif
-    <!-- Comment -->
-    {{--<div class="media">--}}
-        {{--<a class="pull-left" href="#">--}}
-            {{--<img class="media-object" height="50" src="/images/1477370871images.jpeg" alt="">--}}
-        {{--</a>--}}
-        {{--<div class="media-body">--}}
-            {{--<h4 class="media-heading">Replies--}}
-                {{--<small>{{$post->updated_at}}</small>--}}
-            {{--</h4>--}}
 
 
-        {{--</div>--}}
-    {{--</div>--}}
-
-    @stop
+@stop
 
 @section('scripts')
 
@@ -166,4 +167,4 @@
 
     </script>
 
-    @stop
+@stop

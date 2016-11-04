@@ -16,4 +16,15 @@ class Category extends Model
 
      'name'
     ];
+    public function post(){
+
+        return $this->belongsTo('App\Post');
+    }
+
+    public function comment(){
+
+
+
+        return $this->belongsTo('App\Comment');
+    }
 }

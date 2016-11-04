@@ -44,7 +44,9 @@
         @foreach($users as $user)
         <tr class="success">
             <td>{{$user->id}}</td>
-            <td> <img height="150" width="150" src="{{$user->photo ? $user->photo->file:"/images/1477024514HD-White-Pigeon.jpg"}}" alt="" class="img-responsive img-rounded">
+            {{--<td> <img height="150" width="150" src="{{$user->photo ? public_path('images').$user->photo->file:"/images/1477024514HD-White-Pigeon.jpg"}}" alt="" class="img-responsive img-rounded">--}}
+                <td>
+                    <img height="10" width="30" src="{{URL::to('/images/' . $user->photo->file)}}" alt="" class="img-responsive img-rounded">
                 </td>
             <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
             <td>{{$user->email}}</td>

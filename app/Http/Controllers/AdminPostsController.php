@@ -114,7 +114,7 @@ class AdminPostsController extends Controller
             $name=time().$file->getClientOriginalName();
             $file->move('images',$name);
             $photo = Photo::create(['file'=>$name]);
-            $input['photo_id']=$photo->id;
+            $input['photo_id'] = $photo->id;
 
         }
 
@@ -133,9 +133,11 @@ class AdminPostsController extends Controller
     {
         //
 
-        Post::findOrFail($id)->delete();
-        Session::flash('Deleted_post','The user has been deleted');
+        $post=Post::findOrFail($id)->delete();
+        unlink(public_path().$post->photo->file);
 
+        Session::flash('Deleted_post','The user has been deleted');
+        $post->delete();
         return redirect('/admin/posts');
     }
 

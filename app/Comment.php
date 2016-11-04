@@ -20,7 +20,6 @@ class Comment extends Model
 
 
     ];
-
     public function replies(){
 
 
@@ -28,9 +27,14 @@ class Comment extends Model
         return $this->hasMany('App\CommentReply');
     }
 
-public function post(){
+    public function post(){
 
-    return $this->belongsTo('App\Post');
+         return $this->belongsTo('App\Post');
 }
+
+    public  function category(){
+
+        return $this->belongsTo('App\Category');
+    }
 
 }

@@ -3,7 +3,7 @@
 @section('content')
     <h1> Admin  Create Posts!</h1>
 
-{!! Form::open(['method'=>'POST','action'=>'AdminPostsController@store','file'=>true]) !!}
+{!! Form::open(['method'=>'POST','action'=>'AdminPostsController@store','files'=>true]) !!}
     <div class="form-group">
         {!! Form::label('title','Title:') !!}
         {!! Form::text('title',null,['class'=>'form-control']) !!}

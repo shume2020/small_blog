@@ -11,7 +11,7 @@
                 <div class="col-sm-3">
 
 
-                    <img src="{{$user->photo?$user->photo->file:"/images/1477018988chatwork.jpg"}}" alt="Just Sample Change yours!" class="img-responsive img-rounded">
+                    <img src="{{URL::to('/images/' . $user->photo->file)}}" alt="Just Sample Change yours!" class="img-responsive img-rounded">
 
                 </div>
 
