@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+//Route::get('/admin/charts/chartjs', 'HomeController@store');
+//Route::get('/admin/charts/chartjs','HomeController@store');
 //Route::get('admin/media/{file}','AdminMediasController@get');
 //Route::get('/home/about','HomeController@about')->name(about);
 
@@ -38,6 +40,7 @@ Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/posts','AdminPostsController');
     Route::resource('admin/categories','AdminCategoriesController');
     Route::resource('admin/media','AdminMediasController');
+//    Route::resource('admin/charts/chartjs', 'HomeController');
 
 
 

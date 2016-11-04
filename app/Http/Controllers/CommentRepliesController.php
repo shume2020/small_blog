@@ -19,6 +19,8 @@ class CommentRepliesController extends Controller
     public function index()
     {
         //
+//        $replies=CommentReply::paginate(2);
+//        return view('admin.comments.replies.show',compact('replies'));
     }
 
     /**

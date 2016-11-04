@@ -81,7 +81,9 @@
     <!-- Comment -->
          <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" height="50" src={{URL::to('/images/' . $post->photo->file)}} alt="">
+                <img class="media-object" height="50" src={{URL::to('/images/' . $post->user->photo->file)}} alt="">
+                {{--<img class="media-object" height="50" src={{Auth::user()->gravatar}} alt="">--}}
+
             </a>
             <div class="media-body">
                 <h5 class="media-heading">{{$comment->title}} By {{$comment->author}}
@@ -89,52 +91,98 @@
 
                 </h5>
                 <p>{{$comment->body}}</p>
-
+                <!-- Nested Comment -->
                 @if(count($comment->replies)>0)
 
                     @foreach($comment->replies as $reply)
-
-                        <!-- Nested Comment -->
                         @if($reply->is_active == 1)
-
-                        <div id="nested-comment" class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" height="40" src={{URL::to('/images/' . $user->photo->file)}} alt="">
-                            </a>
-                            <div class="media-body">
+                     <div class="media">
+                        <a class="pull-left" href="#">
+                        <img height="50" class="media-object" src="{{URL::to('/images/' . $reply->photo->file)}}" alt="">
+                        {{--<img class="media-object" height="40" src={{URL::to('/images/' . $post->photo->file)}} alt="">--}--}}
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">
                                 <h4 class="media-heading">{{$reply->author}}
                                     <small>{{$reply->created_at->diffForHumans()}}</small>
                                 </h4>
-                                <p>{{$reply->body}}</p>
-                            </div>
 
+                                <small>{{$reply->updated_at}}</small>
+
+                            </h4>
                             <div class="comment-reply-container">
-                                <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                                {{$reply->body}}
+                            <div class="comment-reply col-sm-6"  >
+                            {!! Form::open(['method'=>'POST','action'=>'CommentRepliesController@createReply']) !!}
+                                <button class="toggle-reply btn btn-info pull-right">Reply</button>
+                            <div class="form-group">
 
-                                <div class="comment-reply col-sm-6"  >
-                                    {!! Form::open(['method'=>'POST','action'=>'CommentRepliesController@createReply']) !!}
-                                    <div class="form-group">
+                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                {{--<input type="hidden" name="author" value="{{$comment->user->name}}">--}}
+                                {{--<input type="hidden" name="author" value="{{$comment->author}}">--}}
+                                {!! Form::label('body','Body:') !!}
 
-                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+
+                                {!! Form::textarea('body',null,['class'=>'form-control','rows'=>1]) !!}
+
+
+                            </div>
+                            {{--{{$reply->body}}--}}
+                            </div>
+                            </div>
+                            </div>
+                    </div>
+
+                        @endif
+                      @endforeach
+                @endif
+                <!-- End Nested Comment -->
+                {{--@if(count($comment->replies)>0)--}}
+
+                    {{--@foreach($comment->replies as $reply)--}}
+
+                        {{--<!-- Nested Comment -->--}}
+                        {{--@if($reply->is_active == 1)--}}
+
+                        {{--<div id="nested-comment" class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                                {{--<img class="media-object" height="40" src={{URL::to('/images/' . $user->photo->file)}} alt="">--}}
+                            {{--</a>--}}
+                            {{--<div class="media-body">--}}
+                                {{--<h4 class="media-heading">{{$reply->author}}--}}
+                                    {{--<small>{{$reply->created_at->diffForHumans()}}</small>--}}
+                                {{--</h4>--}}
+                                {{--<p>{{$reply->body}}</p>--}}
+                            {{--</div>--}}
+
+                            {{--<div class="comment-reply-container">--}}
+                                {{--<button class="toggle-reply btn btn-primary pull-right">Reply</button>--}}
+
+                                {{--<div class="comment-reply col-sm-6"  >--}}
+                                    {{--{!! Form::open(['method'=>'POST','action'=>'CommentRepliesController@createReply']) !!}--}}
+                                    {{--<div class="form-group">--}}
+
+                                        {{--<input type="hidden" name="comment_id" value="{{$comment->id}}">--}}
                                         {{--<input type="hidden" name="author" value="{{$comment->user->name}}">--}}
                                         {{--<input type="hidden" name="author" value="{{$comment->author}}">--}}
-                                        {!! Form::label('body','Body:') !!}
-                                        {!! Form::textarea('body',null,['class'=>'form-control','rows'=>1]) !!}
-                                    </div>
+                                        {{--{!! Form::label('body','Body:') !!}--}}
+                                        {{--{!! Form::textarea('body',null,['class'=>'form-control','rows'=>1]) !!}--}}
+                                    {{--</div>--}}
 
-                                    <div class="form-group">
+                                    {{--<div class="form-group">--}}
 
-                                        {!! Form::submit('submit',['class'=>'btn btn-primary']) !!}
+                                        {{--{!! Form::submit('submit',['class'=>'btn btn-primary']) !!}--}}
 
-                                    </div>
-                                    {!! Form::close() !!}
-                                </div>
-                            </div>
+                                    {{--</div>--}}
+                                    {{--{!! Form::close() !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
-                        </div>
-                            @endif
-                        @endforeach
+                        {{--</div>--}}
+                            {{--@endif--}}
+                        {{--@endforeach--}}
 
 
 
@@ -143,7 +191,7 @@
 
 
 
-                   @endif
+                   {{--@endif--}}
 
                 <!-- End Nested Comment -->
             </div>

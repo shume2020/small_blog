@@ -75,7 +75,7 @@
             @endforeach
             </tbody>
         </table>
-
+        {{--{{$replies->render()}}--}}
 
                 @else
 
