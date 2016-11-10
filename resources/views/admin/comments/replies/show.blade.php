@@ -13,7 +13,11 @@
                 <th>Owner</th>
                 <th>Email</th>
                 <th>Body</th>
-                <th>created at</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>View post</th>
+                <th>Approve/Unapprove</th>
+                <th>Delete Reply</th>
                 {{--<th>updated at</th>--}}
             </tr>
             </thead>

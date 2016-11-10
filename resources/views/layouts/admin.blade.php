@@ -204,7 +204,10 @@
                                 {{--<a href="{{route('admin.charts.chartjs')}}">Charts</a>--}}
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a href="{{route('admin.laracharts.create')}}">GeoCharts</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.laracharts.index')}}">AreaCharts</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -350,9 +353,10 @@
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
+
 </div>
 <!-- /#page-wrapper -->
-
+@yield('footer')
 </div>
 <!-- /#wrapper -->
 

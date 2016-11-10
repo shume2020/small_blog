@@ -9,11 +9,16 @@
      <table class="table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Owner</th>
-            <th>Email</th>
+              <th>Id</th>
+              <th>Owner</th>
+              <th>Email</th>
               <th>Body</th>
-              <th>created at</th>
+              <th>Created at</th>
+              <th>Updated at</th>
+              <th>View Post</th>
+              <th>View Reply</th>
+              <th>Approve/Unapprove</th>
+              <th>Delete Post</th>
               {{--<th>updated at</th>--}}
           </tr>
         </thead>

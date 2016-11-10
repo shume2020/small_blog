@@ -11,7 +11,7 @@
                 <div class="col-sm-3">
 
 
-                    <img src="{{URL::to('/images/' . $user->photo->file)}}" alt="Just Sample Change yours!" class="img-responsive img-rounded">
+                    <img src="{{$user->photo? URL::to('/images/' . $user->photo->file):URL::to('/images/1478243356sample_01.jpg')}}" alt="Just Sample Change yours!" class="img-responsive img-rounded">
 
                 </div>
 
@@ -64,7 +64,7 @@
 
                         <div class="form-group">
 
-                            {!! Form::label('photo_id','photo_id') !!}
+                            {!! Form::label('photo_id','Photo') !!}
                             {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
                         </div>
 
