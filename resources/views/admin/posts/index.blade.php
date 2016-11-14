@@ -15,7 +15,7 @@
           <th>Owner</th>
           <th>Catagory Id</th>
           <th>Photo</th>
-          <th>Title</th>
+          <th>Title[click to edit]</th>
           <th>Body</th>
           <th>View Posts</th>
           <th>View Comments</th>
@@ -29,11 +29,11 @@
          @foreach($posts as $post)
           <tr class="success">
               <td>{{$post->id}}</td>
-              <td> <a href="{{route('admin.posts.edit',$post->id)}}" > {{$post->user->name}}</a></td>
+              <td> {{$post->user->name}}</td>
               <td>{{$post->category ? $post->category->name:'uncatagorized'}}</td>
               <td><img height="50" src="{{ URL::to('/images/' . $post->photo->file)}}" alt="" class="src"></td>
               {{--<td><img height="50" src="{{ URL::to('/images/' . $post->photo->file) }}" alt="" class="src"></td>--}}
-              <td>{{$post->title}}</td>
+              <td><a href="{{route('admin.posts.edit',$post->id)}}" > {{str_limit($post->title,18)}}</a></td>
               <td>{{str_limit($post->body,20)}}</td>
               <td><a href="{{route('home.post',$post->id)}}"> View Post!</a>  </td>
               <td><a href="{{route('admin.comments.show',$post->id)}}">View Comments</a></td>

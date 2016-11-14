@@ -59,7 +59,8 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+
+                               {{ ucwords(Auth::user()->name )}}<img width="30" src="{{URL::to('/images/' . Auth::user()->photo->file)}}" alt=""> <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
