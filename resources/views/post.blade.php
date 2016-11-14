@@ -27,7 +27,7 @@
     <hr>
 
     <!-- Post Content -->
-    <p class="lead">{{$post->body}}</p>
+    <p class="lead">{!! nl2br(e($post->body)) !!}</p>
 
 
     {{--<p class="lead">Catagory   <tab>  </tab>{{$post->category->name}}</p>--}}
@@ -103,7 +103,7 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading">{{$reply->title}} By {{$reply->author}}
-                                            <small>August 25, 2014 at 9:30 PM</small>
+                                            <small>{{$reply->updated_at}}</small>
                                         </h4>
                                       <p>{{$reply->body}}</p>
                                     </div>

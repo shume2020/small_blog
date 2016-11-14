@@ -39,7 +39,7 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar">{{ Auth::user()->name }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -54,16 +54,22 @@
 
             <!-- /.dropdown -->
             <li class="dropdown">
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    {{ Auth::user()->name }}
+                    <img width="30" src="{{URL::to('/images/' . Auth::user()->photo->file)}}" alt=""><i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="{{route('admin.users.edit',Auth::user()->id)}}"><i class="fa fa-user fa-fw"></i>
+                            {{ Auth::user()->name }} Profile</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
+
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Role || {{Auth::user()->role->name}} </a>
+                    </li>
                     <li class="divider"></li>
-                    <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout </a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->

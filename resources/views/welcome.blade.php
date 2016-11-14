@@ -9,6 +9,8 @@
 
                 <div class="panel-body">
                     Your Application's Landing Page.
+                    Welcome wait until the user authenticates
+
                 </div>
             </div>
         </div>

@@ -109,6 +109,7 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         $input=$request->all();
         if($file=$request->file('photo_id')){
             $name=time().$file->getClientOriginalName();
@@ -118,7 +119,8 @@ class AdminPostsController extends Controller
 
         }
 
-        Auth::user()->posts()->whereId($id)->first()->update($input);
+        var_dump($input);
+       Auth::user()->posts()->whereId($id)->first()->update($input);
         return redirect('/admin/posts');
 
     }
@@ -134,7 +136,7 @@ class AdminPostsController extends Controller
         //
 
         $post=Post::findOrFail($id)->delete();
-        unlink(public_path().$post->photo->file);
+        //unlink(public_path().$post->photo->file);
 
         Session::flash('Deleted_post','The user has been deleted');
         $post->delete();

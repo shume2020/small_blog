@@ -51,13 +51,13 @@
                         <div class="form-group">
 
                             {!! Form::label('created_at','Created_at') !!}
-                            {!! Form::text('created_at',null,['class'=>'form-control']) !!}
+                            {!! Form::text('created_at',null,['class'=>'form-control','readonly']) !!}
                         </div>
 
                         <div class="form-group">
 
                             {!! Form::label('updatedat','Updated_at') !!}
-                            {!! Form::text('updated_at',null,['class'=>'form-control']) !!}
+                            {!! Form::text('updated_at',null,['class'=>'form-control','readonly']) !!}
                         </div>
 
 

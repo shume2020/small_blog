@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    {{--Welcome{{$users->name}} wait until the user authenticates--}}
                 </div>
             </div>
         </div>
