@@ -1,5 +1,5 @@
-@extends('layouts.blog-post')
-
+@extends('layouts.layout2')
+<body style=" margin-left: 40px;">
 
 @section('content')
 
@@ -322,7 +322,7 @@
 
 
 @stop
-
+</body>
 @section('scripts')
 
     <script>

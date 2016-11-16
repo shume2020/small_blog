@@ -35,17 +35,14 @@ class User extends Authenticatable
     }
 
     public  function isAdmin(){
-        //echo $this->role_id;
-        // role_id 1;admin,
-        //if ($this->role_id === 2 && $this->is_active === 1) {
+
         if ($this->role_id === 1 && $this->is_active == 1) {
-           // echo $this->role_id;
-           // echo "admin";
+
             return true;
         } else {
 
              return false;
-             //echo "not";
+
          }
     }
 

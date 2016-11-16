@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layouts')
 
 @section('content')
 <div class="container">
@@ -64,3 +64,16 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+
+    <hr style="    margin-top: 303px;
+    margin-bottom: 57px;
+    border: 0;
+    border-top: 1px solid #eee;"/>
+    <p style=" text-align: center; font-size: 14px;  margin: 0 0 10px;
+    margin-left: 105px;
+    margin-top: -45px;
+text-decoration-color: #5bc0de;"> This is closed group blog for small comapany!</p>
+
+    @endsection

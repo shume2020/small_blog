@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index');
 //Route::get('/home/about','HomeController@about')->name(about);
 //Route::get('laracharts', 'ChartController@getLaraChart');
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
-
+//Route::get('/shows/{id}',['as'=>'home.post','uses'=>'AdminPostsController@shows']);
 Route::group(['middleware'=>'admin'], function (){
 
     Route::get('/download', 'AdminMediasController@getDownload');

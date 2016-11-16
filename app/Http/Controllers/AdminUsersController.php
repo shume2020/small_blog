@@ -146,4 +146,12 @@ class AdminUsersController extends Controller
     }
 
 
+
+    // Tomorrow will do!
+    //public function users($id){
+    //
+    //    $users=User::findOrfail($id);
+    //    $rolles=Role::lists('name','id')->all();
+    //    return view('layouts.layouts',compact('users','rolles'));
+    //}
 }

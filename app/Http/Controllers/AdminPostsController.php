@@ -82,6 +82,9 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+        $postss=Post::findOrfail($id)->whereId(1)->get();;
+       // $posts=Post::findOrFail($id);
+        return view('welcome',compact('postss'));
     }
 
     /**
@@ -152,4 +155,5 @@ class AdminPostsController extends Controller
 
         return view('post',compact('post','comments'));
     }
+
 }

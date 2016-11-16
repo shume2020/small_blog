@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class AdminMediasController extends Controller
 {
@@ -70,11 +71,12 @@ public function update(){
 }
     public function getDownload(){
         //PDF file is stored under project/public/download/info.pdf
-//        $entry= Photo::where('id','=',$fileId)->firstOrFail();
-//        $path = public_path()."/images/".$entry->filename;
-//        return response()->download($path,'Content-Type');
+//        $entry= Photo::where('file','=',$filename)->firstOrFail();
+//        $path = Storage::disk('local')->get($entry->filename);
+////        URL::secure(public_path().'/images/'.$entry->filename);
+//        return(new response($path,200))->header('Content-Type',$entry->mime);
 
-       return response()->download(public_path()."/images/1477617526sample_05.jpg");
+       return response()->download(public_path()."/images/1477981407image_1.jpg");
     }
 public function getTimms(){
 
