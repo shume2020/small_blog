@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
-
+<title></title>
 <body>
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
@@ -106,93 +106,45 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <form action="/search" method="POST" role="search">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q"
+                                       placeholder="Search Posts"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
+
+                    {{--@if (count($articles) === 0)--}}
+                        {{--... html showing no articles found--}}
+                    {{--@elseif (count($articles) >= 1)--}}
+                        {{--... print out results--}}
+                        {{--@foreach($articles as $article)--}}
+                            {{--print article--}}
+                        {{--@endforeach--}}
+                    {{--@endif--}}
+                </div>
+
+
             </div>
-        </div>
+
+
+            </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
 
 @yield('content')
 
-<footer id="footer"><!--Footer-->
-    <div class="footer-top">
+<footer id="footer" style="    margin-right: -140px;margin-left: -140px;margin-top: 300px"><!--Footer-->
+    <div class="footer-top" >
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
-                    <div class="companyinfo">
-                        <h2><span>B</span>-Posts</h2>
-                        <p>This is the blog page that we post our issues freely!</p>
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe1.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe2.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe3.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe4.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="address">
-                        <img src="{{asset('images/home/map.png')}}" alt="" />
-                        <p>Kobe Sannomiya Motomachi</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -200,6 +152,12 @@
     <div class="footer-widget">
         <div class="container">
             <div class="row">
+                <div class="col-sm-2">
+                    <div class="companyinfo">
+                        <h2><span>B</span>-Posts</h2>
+                        <p>This is the blog page that we post our issues freely!z<li><a href="#"></a></p>
+                    </div>
+                </div>
                 <div class="col-sm-2">
                     <div class="single-widget">
                         <h2>Service</h2>
@@ -223,7 +181,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3 col-sm-offset-1 pull-right" style="margin-top:-10px;">
+                <div class="col-sm-3">
+                    <div class="address">
+                        <img src="{{asset('images/home/map.png')}}" alt="" />
+                        <p>Kobe Sannomiya Motomachi</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 pull-right" style="    margin-top: -160px" >
                     <div class="single-widget">
                         <h2>About Shopper</h2>
                         <form action="#" class="searchform">

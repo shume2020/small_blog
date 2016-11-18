@@ -10,7 +10,7 @@
 </div><!--/category-products-->
 
 <div class="brands_products"><!--brands_products-->
-    <h2>Brands</h2>
+    <h2>Services</h2>
     <div class="brands-name">
         <ul class="nav nav-pills nav-stacked">
 {{--@foreach ($brands as $brand)--}}
@@ -21,5 +21,5 @@
 </div><!--/brands_products-->
 
 <div class="shipping text-center"><!--shipping-->
-    <img src="{{asset('images/home/shipping.jpg')}}" alt="" />
+    {{--<img src="{{asset('images/main/2.jpg')}}" alt="" />--}}
 </div><!--/shipping-->

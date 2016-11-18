@@ -1,5 +1,9 @@
 <?php
 
+use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -14,8 +18,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/',function (){
+   $posts=Post::all();
+    return view('welcome',compact('posts'));
 
+});
 
+Route::any('/search',function(){
+    $q = Input::get ( 'q' );
+    $post = Post::where('title','LIKE','%'.$q.'%')->orWhere('body','LIKE','%'.$q.'%')->orWhere('user_id','LIKE','%'.$q.'%')->orWhere('category_id','LIKE','%'.$q.'%')->paginate(3);
+    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('role_id','LIKE','%'.$q.'%')->orWhere('photo_id','LIKE','%'.$q.'%')->paginate(3);
+
+    if(count($post))
+        return view('welcome')->withDetails($post,$users)->withQuery ( $q );
+    else
+        return view ('welcome')->withMessage('No Details found. Try to search again !');
+});
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
@@ -24,8 +42,8 @@ Route::get('/home', 'HomeController@index');
 //Route::get('admin/media/{file}','AdminMediasController@get');
 //Route::get('/home/about','HomeController@about')->name(about);
 //Route::get('laracharts', 'ChartController@getLaraChart');
-Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
-//Route::get('/shows/{id}',['as'=>'home.post','uses'=>'AdminPostsController@shows']);
+
+
 Route::group(['middleware'=>'admin'], function (){
 
     Route::get('/download', 'AdminMediasController@getDownload');
@@ -51,14 +69,19 @@ Route::group(['middleware'=>'admin'], function (){
    // Route::resource('admin/laracharts/laracharts','ChartController');
 
 
+
 //Route::get('admin/media/upload',['as'=>'admin.media.upload','uses'=>'AdminMediasController@store']);
 
 });
+
+    Route::resource('queries','QueryController');
+    Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
+//    Route::get('/shows/{id}',['as'=>'home.post','uses'=>'AdminPostsController@shows']);
+
 //Route::get('admin/reports/daily', 'ReportsController@daily');
 Route::group(['middleware'=>'auth'],function (){
 
    Route::post('comment/reply','CommentRepliesController@createReply');
-
 
     //Route::get('admin/laracharts', 'ChartController@getLaraChart');
 

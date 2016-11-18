@@ -79,12 +79,12 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function shows($id)
     {
         //
-        $postss=Post::findOrfail($id)->whereId(1)->get();;
+        $post=Post::findOrFail($id);
        // $posts=Post::findOrFail($id);
-        return view('welcome',compact('postss'));
+        return view('welcome',compact('post'));
     }
 
     /**

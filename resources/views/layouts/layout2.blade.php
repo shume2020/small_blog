@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
 
-<body>
+
 <header id="header"><!--header-->
     <div class="header_top" style=" margin-left: -77px;"> <!--header_top-->
         <div class="container">
@@ -62,7 +62,7 @@
                             <li><a href="{{url('/register')}}"><i class="fa fa-crosshairs"></i>{{Auth::check()? 'Registered':'Register'}}</a></li>
                             <li><a href="{{url('/home')}}"><i class="fa fa-coffee"></i>Service</a></li>
                             <li><a href="{{Auth::check() ? url('/logout') : url('/login')}}"><i class="fa fa-lock"></i> {{Auth::check() ? 'Logout' : 'Login'}}</a></li>
-                            {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
+
                         </ul>
                     </div>
                 </div>
@@ -71,8 +71,7 @@
     </div><!--/header-middle-->
 
     <div class="header-bottom"><!--header-bottom-->
-        <div class="container" style="    margin-left: -36px;
-    margin-top: -15px;">
+        <div class="container" style="    margin-left: -1px;margin-top: -15px;">
             <div class="row">
                 <div class="col-sm-9">
                     <div class="navbar-header">
@@ -86,102 +85,89 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{url('')}}" class="active">Home</a></li>
-                            <li><a href="{{url('products')}}" class="active">Products</a></li>
+                            <li><a href="{{url('products')}}" >Products</a></li>
                             <li><a href="{{url('blog')}}">Blog</a></li>
                             <li><a href="{{url('contact-us')}}" >Contact Us</a></li>
-                            {{--<li><a href="{{url('')}}" {{$page == 'welcome' ? 'class=active' : ''}}>Home</a></li>--}}
-                            {{--<li><a href="{{url('products')}}" {{$page == 'home' ? 'class=active' : ''}}>Products</a></li>--}}
-                            {{--<li><a href="{{url('blog')}}" {{$page == 'blog' ? 'class=active' : ''}}>Blog</a></li>--}}
-                            {{--<li><a href="{{url('contact-us')}}" {{$page == 'contact_us' ? 'class=active' : ''}}>Contact Us</a></li>--}}
+
                         </ul>
                     </div>
                 </div>
-                {{--<div class="col-sm-3">--}}
-                    {{--<div class="search_box pull-right">--}}
-                        {{--<input type="text" placeholder="Search"/>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            </div>
+
+             </div>
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<div class="container">
+    <div class="container">
 
-    <div class="row">
+            <div class="row">
 
-        <!-- Blog Post Content Column -->
-        <div class="col-lg-8">
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-8">
 
-            @yield('content')
+                    @yield('content')
 
-        </div>
+                 </div>
 
-        <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4" >
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4" style="margin-right: -500px">
 
-            <!-- Blog Search Well -->
-            <div class="well">
-                <h4>Blog Search</h4>
-                <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                </div>
-                <!-- /.input-group -->
-            </div>
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>Blog Search</h4>
+                        <div class="input-group">
+                            <form action="/search" method="POST" role="search">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="q"
+                                           placeholder="Search Posts"> <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                         </button>
+                                        </span>
+                                </div>
+                            </form>
+                        </div>
+                     </div>
 
-            <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Blog Categories</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-
-                                    {{--@foreach($post->category as $category)--}}
-
-                            {{--<li><a href="#">{{$category ? $post->category->name:'uncatagorized'}}</a>--}}
-                            {{--</li>--}}
-                            {{--@endforeach--}}
-                            <li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>
-                            </li>
-                            <li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>
-                            </li>
-                            <li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>
-                            </li>
-                        </ul>
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+                        <h4>Blog Categories</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>
+                                    </li>
+                                    {{--<li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>--}}
+                                    {{--</li>--}}
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.row -->
                     </div>
-                    <div class="col-lg-6">
-                        {{--<ul class="list-unstyled">--}}
-                        {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                        {{--</li>--}}
-                        {{--</ul>--}}
+
+                    <!-- Side Widget Well -->
+                    <div class="well">
+                        <h4>Date</h4>
+                        <p>{{\Carbon\Carbon::Now('Japan')}}</p>
                     </div>
+
                 </div>
-                <!-- /.row -->
+
             </div>
-
-            <!-- Side Widget Well -->
-            <div class="well">
-                <h4>Date</h4>
-                <p>{{\Carbon\Carbon::Now('Japan')}}</p>
-            </div>
-
-        </div>
-
     </div>
 
-<footer id="footer" style="    margin-left: -152px;margin-right: -106px"><!--Footer-->
-    <div class="footer-top">
+<footer id="footer" style="    margin-right: -40px;margin-left: -10px;margin-top: 400px"><!--Footer-->
+    <div class="footer-top" >
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-widget">
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">
@@ -190,80 +176,6 @@
                         <p>This is the blog page that we post our issues freely!</p>
                     </div>
                 </div>
-                <div class="col-sm-7">
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe1.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights{{$post->title}}</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe2.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe3.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="{{asset('images/home/iframe4.png')}}" alt="" />
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-                            <p>Post Highlights</p>
-                            <h2>{{date('Y-M-D')}}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="address">
-                        <img src="{{asset('images/home/map.png')}}" alt="" />
-                        <p>Kobe Sannomiya Motomachi</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-widget">
-        <div class="container">
-            <div class="row">
                 <div class="col-sm-2">
                     <div class="single-widget">
                         <h2>Service</h2>
@@ -287,7 +199,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3 col-sm-offset-1 pull-right" style="margin-top:-10px;">
+                <div class="col-sm-3">
+                    <div class="address">
+                        <img src="{{asset('images/home/map.png')}}" alt="" />
+                        <p>Kobe Sannomiya Motomachi</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 pull-right" style="    margin-top: -160px" >
                     <div class="single-widget">
                         <h2>About Shopper</h2>
                         <form action="#" class="searchform">
@@ -310,9 +228,7 @@
             </div>
         </div>
     </div>
-
-</footer><!--/Footer-->
-
+</footer>
 
 
 <script src="{{asset('js/jquery.js')}}"></script>
@@ -321,5 +237,5 @@
 <script src="{{asset('js/price-range.js')}}"></script>
 <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-</body>
-</html>
+
+
