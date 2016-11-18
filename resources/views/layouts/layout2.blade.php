@@ -84,10 +84,10 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('')}}" class="active">Home</a></li>
-                            <li><a href="{{url('products')}}" >Products</a></li>
-                            <li><a href="{{url('blog')}}">Blog</a></li>
-                            <li><a href="{{url('contact-us')}}" >Contact Us</a></li>
+                            <li><a href="{{url('home')}}" class="active">Home</a></li>
+                            <li><a href="{{url('/service')}}" >Service</a></li>
+                            <li><a href="{{url('/post/1')}}">Blog</a></li>
+                            <li><a href="{{url('/contact')}}" >Contact Us</a></li>
 
                         </ul>
                     </div>
@@ -116,7 +116,7 @@
                     <div class="well">
                         <h4>Blog Search</h4>
                         <div class="input-group">
-                            <form action="/search" method="POST" role="search">
+                            <form action="/" method="POST" role="search">
                                 {{ csrf_field() }}
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="q"

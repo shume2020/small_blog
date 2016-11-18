@@ -3,6 +3,7 @@
 use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,22 +16,60 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/',function (){
-   $posts=Post::all();
-    return view('welcome',compact('posts'));
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//Route::get('/',function (){
+//   $posts=Post::all();
+//    return view('welcome',compact('posts'));
+//
+//});
+Route::get('/service',function (){
+
+    $users=Post::paginate(10);
+    return view('service',compact('users'));
 
 });
+Route::get('/contact',function (){
 
-Route::any('/search',function(){
+    return view('contact');
+
+});
+ Route::get('/mail',function () {
+
+     $data = [
+
+         'title' => 'The bset student that I hope',
+         'content' => 'Please attend the laravlel tutorial in this link https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel/learn/v4/t/lecture/4960684'
+
+     ];
+
+
+     Mail::send('contact', $data, function ($message) {
+
+         $message->to('shume98@gmail.com', 'shumex')->subject('Hey there');
+
+     });
+     //return view('contact',compact('data'));
+
+ });
+
+Route::any('/',function(){
     $q = Input::get ( 'q' );
     $post = Post::where('title','LIKE','%'.$q.'%')->orWhere('body','LIKE','%'.$q.'%')->orWhere('user_id','LIKE','%'.$q.'%')->orWhere('category_id','LIKE','%'.$q.'%')->paginate(3);
-    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('role_id','LIKE','%'.$q.'%')->orWhere('photo_id','LIKE','%'.$q.'%')->paginate(3);
+
 
     if(count($post))
-        return view('welcome')->withDetails($post,$users)->withQuery ( $q );
+        return view('welcome')->withDetails($post)->withQuery ( $q );
+    else
+        return view ('welcome')->withMessage('No Details found. Try to search again !');
+});
+Route::any('/admin/users',function(){
+    $q = Input::get ( 'q' );
+    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('role_id','LIKE','%'.$q.'%')->orWhere('photo_id','LIKE','%'.$q.'%')->paginate(3);
+
+    if(count($users))
+        return view('welcome')->withDetails($users)->withQuery ( $q );
     else
         return view ('welcome')->withMessage('No Details found. Try to search again !');
 });

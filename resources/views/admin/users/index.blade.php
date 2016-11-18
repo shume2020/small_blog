@@ -4,8 +4,73 @@
 
 
 @section('content')
+    <div class="col-sm-3">
+        <div class="search_box pull-right">
+            <form action="/admin/users" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q"
+                           placeholder="Search Posts"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                                </span>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <h1>Users</h1>
+        @if(isset($details))
+            <p> The Search results for your query <b> {{ $query }} </b> are :</p>
+            <h2>Searched Post details</h2>
+            <table class="table tab-pane">
+                <thead>
+                <tr>
+                    <th>Post ID</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Created by</th>
+                    <th>Category</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($details as $user)
+                    <tr>
+                        <td>{{$user->id}}</td>
+                        {{--<td><a href=""> View Post!</a>  </td>--}}
+
+                        {{--<td><a href="{{route('home.post',$post->id)}}">{{$post->title}}</a></td>--}}
+                        {{--<td>{{str_limit($post->body,50)}}</td>--}}
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->role->name}}</td>
+                        <td>{{$user->created_at->diffForHumans()}}</td>
+                        <td>{{$user->updated_at->diffForHumans()}}</td>
+
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-5">
+                    {{$details->render()}}
+
+                </div>
+                @else
+                    <h4 STYLE="text-align: right; font-style: oblique;color: #2e6da4">...no such post search result!</h4>
+                @endif
+
+
+    {{--{!! Form::open(['method'=>'POST','action'=>'AdminPostsController@store','files'=>true]) !!}--}}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('title','Title:') !!}--}}
+        {{--{!! Form::text('title',null,['class'=>'form-control']) !!}--}}
+
+
+    {{--</div>--}}
+
+    <br><h1>Users</h1>
     @if(Session::has('Deleted_user'))
 
         <p class="bg-danger pull-right">{{session('Deleted_user')}}</p>

@@ -13,6 +13,18 @@
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/form.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+
+    <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <!--[if lt IE 9]>
     <script src="{{asset('js/html5shiv.js')}}"></script>
     <script src="{{asset('js/respond.min.js')}}"></script>
@@ -87,26 +99,22 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+                    @if(Auth::check())
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('')}}" class="active">Home</a></li>
-                            <li><a href="{{url('products')}}" class="active">Products</a></li>
-                            <li><a href="{{url('blog')}}">Blog</a></li>
-                            <li><a href="{{url('contact-us')}}" >Contact Us</a></li>
-                            {{--<h1>{{$rolles->name}}</h1>--}}
-                            {{--@foreach($rolles as $role)--}}
-                                  {{--<h3>{{$role->name}}</h3>--}}
-                                {{--@endforeach--}}
-                            {{--<li><a href="{{url('')}}" {{$page == 'welcome' ? 'class=active' : ''}}>Home</a></li>--}}
-                            {{--<li><a href="{{url('products')}}" {{$page == 'home' ? 'class=active' : ''}}>Products</a></li>--}}
-                            {{--<li><a href="{{url('blog')}}" {{$page == 'blog' ? 'class=active' : ''}}>Blog</a></li>--}}
-                            {{--<li><a href="{{url('contact-us')}}" {{$page == 'contact_us' ? 'class=active' : ''}}>Contact Us</a></li>--}}
+                            <li><a href="{{url('home')}}" class="active">Home</a></li>
+                            <li><a href="{{url('/service')}}">Services</a></li>
+                            <li><a href="{{url('/post/1')}}">Blog</a></li>
+                            <li><a href="{{url('/contact')}}" >Contact Us</a></li>
+
+
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <form action="/search" method="POST" role="search">
+                        <form action="/" method="POST" role="search">
                             {{ csrf_field() }}
                             <div class="input-group">
                                 <input type="text" class="form-control" name="q"
@@ -119,7 +127,9 @@
                         </form>
                     </div>
                 </div>
-
+                @else
+                    <h4>Please login  to use the services</h4>
+                @endif
 
                     {{--@if (count($articles) === 0)--}}
                         {{--... html showing no articles found--}}
