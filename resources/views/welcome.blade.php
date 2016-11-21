@@ -44,6 +44,7 @@
                     </div>
                     @else
                         <h4 STYLE="text-align: right; font-style: oblique;color: #2e6da4">...no such post search result!</h4>
+                       {{--{{$message}}--}}
                     @endif
                     @else
                         <h4 class="bg-warning pull-right" style="font-style: italic">Please login first</h4>

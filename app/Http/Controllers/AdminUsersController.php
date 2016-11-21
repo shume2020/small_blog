@@ -119,7 +119,7 @@ class AdminUsersController extends Controller
             $name= time() . $file->getClientOriginalName();
             $file->move('images',$name);
 
-        $photo =Photo::create(['file'=>$name]);
+            $photo =Photo::create(['file'=>$name]);
             $input['photo_id']=$photo->id;
         }
         $input['password'] = bcrypt($request->password);

@@ -56,7 +56,14 @@ Route::get('/contact',function (){
 
 Route::any('/',function(){
     $q = Input::get ( 'q' );
-    $post = Post::where('title','LIKE','%'.$q.'%')->orWhere('body','LIKE','%'.$q.'%')->orWhere('user_id','LIKE','%'.$q.'%')->orWhere('category_id','LIKE','%'.$q.'%')->paginate(3);
+    $post = Post::where('title','LIKE','%'.$q.'%')
+        ->orWhere('body','LIKE','%'.$q.'%')
+        ->orWhere('user_id','LIKE','%'.$q.'%')
+        ->orWhere('category_id','LIKE','%'.$q.'%')
+        ->orWhere('created_at','LIKE','%'.$q.'%')
+        ->orWhere('updated_at','LIKE','%'.$q.'%')
+//        ->orWhere('post()->category->name','LIKE','%'.$q.'%')
+        ->paginate(5);
 
 
     if(count($post))
@@ -105,6 +112,8 @@ Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/comments','PostCommentsController');
     Route::resource('admin/comments/replies','CommentRepliesController');
     Route::resource('admin/laracharts','ChartController');
+
+//    Route::resource('author')
    // Route::resource('admin/laracharts/laracharts','ChartController');
 
 
@@ -119,9 +128,12 @@ Route::group(['middleware'=>'admin'], function (){
 
 //Route::get('admin/reports/daily', 'ReportsController@daily');
 Route::group(['middleware'=>'auth'],function (){
+   Route::resource('author/post','AuthorPostsController');
+   Route::resource('author/comment','AuthorCommentsController');
+   Route::resource('author/comment/replies','AuthorRepliesController');
 
-   Route::post('comment/reply','CommentRepliesController@createReply');
-
+    Route::post('comment/reply','CommentRepliesController@createReply');
+//   Route::post('author/create',['as'=>'author.create','uses'=>'AuthorPostsController@createPost']);
     //Route::get('admin/laracharts', 'ChartController@getLaraChart');
 
 });

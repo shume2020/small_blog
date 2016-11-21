@@ -88,6 +88,23 @@
                             <li><a href="{{url('/service')}}" >Service</a></li>
                             <li><a href="{{url('/post/1')}}">Blog</a></li>
                             <li><a href="{{url('/contact')}}" >Contact Us</a></li>
+                            @if(Auth::user()->role->name=='author')
+                                <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
+                                <li><a href="{{route('author.post.index')}}">Posts</a></li>
+
+                                {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
+                            @endif
+                            @if(Auth::user()->role->name=='author')
+                                <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
+                                <li><a href="{{route('author.post.index')}}">Posts</a></li>
+
+                                {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
+                            @endif
+
+                            @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
+                                <li><a href="{{route('admin.users.index')}}">Admin Page</a></li>
+
+                            @endif
 
                         </ul>
                     </div>

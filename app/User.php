@@ -39,7 +39,9 @@ class User extends Authenticatable
         if ($this->role_id === 1 && $this->is_active == 1) {
 
             return true;
-        } else {
+        }
+
+        else {
 
              return false;
 

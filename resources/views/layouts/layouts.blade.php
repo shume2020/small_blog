@@ -35,10 +35,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
-<title></title>
+@yield('styles')
 <body>
+
+
+
+
+
 <header id="header"><!--header-->
-    <div class="header_top"><!--header_top-->
+    <div class="header_top" style="margin-top: -73px"><!--header_top-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -86,6 +91,10 @@
             </div>
         </div>
     </div><!--/header-middle-->
+    <div>
+
+
+    </div>
 
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
@@ -106,6 +115,17 @@
                             <li><a href="{{url('/service')}}">Services</a></li>
                             <li><a href="{{url('/post/1')}}">Blog</a></li>
                             <li><a href="{{url('/contact')}}" >Contact Us</a></li>
+                                @if(Auth::user()->role->name=='author')
+                                <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
+                                <li><a href="{{route('author.post.index')}}">Posts</a></li>
+
+                                {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
+                                @endif
+                            @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
+                                <li><a href="{{route('admin.users.index')}}">Posts</a></li>
+
+                                @endif
+
 
 
 
@@ -151,7 +171,7 @@
 
 @yield('content')
 
-<footer id="footer" style="    margin-right: -140px;margin-left: -140px;margin-top: 300px"><!--Footer-->
+<footer id="footer" style="    margin-right: -140px;margin-left: -140px;margin-top: 300px;margin-bottom: -24px"><!--Footer-->
     <div class="footer-top" >
         <div class="container">
             <div class="row">
