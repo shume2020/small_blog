@@ -22,6 +22,7 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -69,16 +70,17 @@
         </div>
     </div><!--/header_top-->
 
-    <div class="header-middle"><!--header-middle-->
+    <div class="header-middle" style="background-color: palegreen"><!--header-middle-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="{{url('')}}"><img src="{{asset('images/home/logo.png')}}" alt="" /></a>
+                        <a href="{{url('')}}"><img src="{{asset('images/main/logo.png')}}" alt="" /></a>
                     </div>
                 </div>
+
                 <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
+                    <div class="pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> {{Auth::check() ? Auth::user()->name : 'Account'}}</a></li>
                             <li><a href="{{url('/register')}}"><i class="fa fa-crosshairs"></i>{{Auth::check()? 'Registered':'Register'}}</a></li>
@@ -93,12 +95,11 @@
     </div><!--/header-middle-->
     <div>
 
-
     </div>
 
-    <div class="header-bottom"><!--header-bottom-->
+    <div class="header-bottom" style="margin-top: -33px"><!--header-bottom-->
         <div class="container">
-            <div class="row">
+            <div class="row" style="background-color: greenyellow">
                 <div class="col-sm-9">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -122,7 +123,7 @@
                                 {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
                                 @endif
                             @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
-                                <li><a href="{{route('admin.users.index')}}">Posts</a></li>
+                                <li><a href="{{route('admin.index')}}">Admin page</a></li>
 
                                 @endif
 
@@ -134,7 +135,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <form action="/" method="POST" role="search">
+                        <form action="/posts" method="POST" role="search">
                             {{ csrf_field() }}
                             <div class="input-group">
                                 <input type="text" class="form-control" name="q"
@@ -147,18 +148,10 @@
                         </form>
                     </div>
                 </div>
-                @else
-                    <h4>Please login  to use the services</h4>
+
                 @endif
 
-                    {{--@if (count($articles) === 0)--}}
-                        {{--... html showing no articles found--}}
-                    {{--@elseif (count($articles) >= 1)--}}
-                        {{--... print out results--}}
-                        {{--@foreach($articles as $article)--}}
-                            {{--print article--}}
-                        {{--@endforeach--}}
-                    {{--@endif--}}
+
                 </div>
 
 

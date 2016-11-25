@@ -2,8 +2,27 @@
 
 
 @section('content')
-    <h1>Media page</h1>
 
+<div class="row">
+   <div class="col-sm-6"> <h3>Media page</h3>
+   </div>
+
+    <div class="col-sm-6">
+        <div class="search_box pull-right">
+            <form action="/media" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q"
+                           placeholder="Search media"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                                </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     @if($photos)
 
     <table class="table">
@@ -18,7 +37,7 @@
         <tbody>
 
         @foreach($photos as $photo)
-          <tr class="success">
+          <tr class="bg-info">
               <td>{{$photo->id}}</td>
                <td><a href="{{route('admin.media.index')}}">{{$photo->file}}</a></td>
                 {{--<td><img src="{{public_path().$photo->file}}" alt="">--}}
@@ -67,7 +86,7 @@
 
 <div class="row">
 
-    <div class="col-sm-6 col-sm-offset-5">
+    <div class="col-sm-8 col-sm-offset-3">
 
         {{$photos->render()}}
     </div>

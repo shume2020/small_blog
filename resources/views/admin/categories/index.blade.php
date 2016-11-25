@@ -43,7 +43,7 @@
 
             @foreach($categories as $category)
                 <tbody>
-                <tr class="success">
+                <tr class="bg-info">
                     <td>{{$category->id}}</td>
                     <td><a href="{{route('admin.categories.edit',$category->id)}}" class="hrf">{{$category->name}}</a></td>
                     <td>{{$category->created_at->diffForHumans()}}</td>

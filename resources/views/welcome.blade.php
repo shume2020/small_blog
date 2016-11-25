@@ -43,7 +43,7 @@
 
                     </div>
                     @else
-                        <h4 STYLE="text-align: right; font-style: oblique;color: #2e6da4">...no such post search result!</h4>
+                        {{--<h4 STYLE="text-align: right; font-style: oblique;color: #2e6da4">...no such post search result!</h4>--}}
                        {{--{{$message}}--}}
                     @endif
                     @else

@@ -52,27 +52,36 @@
         </div>
     </div><!--/header_top-->
 
-    <div class="header-middle pull-right" style="margin-right: -60px;margin-top: -27px;"><!--header-middle-->
-        <div class="container pull-right" >
+    <div class="header-middle" style="background-color: palegreen;margin-left: -41px"><!--header-middle-->
+        <div class="container">
             <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a href="{{url('')}}"><img src="{{asset('images/main/logo.png')}}" alt="" /></a>
+                    </div>
+                </div>
+
                 <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
+                    <div class="pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> {{Auth::check() ? Auth::user()->name : 'Account'}}</a></li>
                             <li><a href="{{url('/register')}}"><i class="fa fa-crosshairs"></i>{{Auth::check()? 'Registered':'Register'}}</a></li>
                             <li><a href="{{url('/home')}}"><i class="fa fa-coffee"></i>Service</a></li>
                             <li><a href="{{Auth::check() ? url('/logout') : url('/login')}}"><i class="fa fa-lock"></i> {{Auth::check() ? 'Logout' : 'Login'}}</a></li>
-
+                            {{--<li><a href="{{ url('/register') }}">{{$post->title}}</a></li>--}}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/header-middle-->
+    <div>
 
-    <div class="header-bottom"><!--header-bottom-->
-        <div class="container" style="    margin-left: -1px;margin-top: -15px;">
-            <div class="row">
+    </div>
+
+    <div class="header-bottom" style="margin-top: -33px"><!--header-bottom-->
+        <div class="container">
+            <div class="row" style="background-color: greenyellow">
                 <div class="col-sm-9">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -82,36 +91,56 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
-                    <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('home')}}" class="active">Home</a></li>
-                            <li><a href="{{url('/service')}}" >Service</a></li>
-                            <li><a href="{{url('/post/1')}}">Blog</a></li>
-                            <li><a href="{{url('/contact')}}" >Contact Us</a></li>
-                            @if(Auth::user()->role->name=='author')
-                                <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
-                                <li><a href="{{route('author.post.index')}}">Posts</a></li>
+                    @if(Auth::check())
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="{{url('home')}}" class="active">Home</a></li>
+                                <li><a href="{{url('/service')}}">Services</a></li>
+                                <li><a href="{{url('/post/1')}}">Blog</a></li>
+                                <li><a href="{{url('/contact')}}" >Contact Us</a></li>
+                                @if(Auth::user()->role->name=='author')
+                                    <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
+                                    <li><a href="{{route('author.post.index')}}">Posts</a></li>
 
-                                {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
-                            @endif
-                            @if(Auth::user()->role->name=='author')
-                                <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
-                                <li><a href="{{route('author.post.index')}}">Posts</a></li>
+                                    {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
+                                @endif
+                                @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
+                                    <li><a href="{{route('admin.index')}}">Admin page</a></li>
 
-                                {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
-                            @endif
+                                @endif
 
-                            @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
-                                <li><a href="{{route('admin.users.index')}}">Admin Page</a></li>
 
-                            @endif
 
-                        </ul>
+
+                            </ul>
+                        </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="search_box pull-right">
+                        <form action="/posts" method="POST" role="search">
+                            {{ csrf_field() }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q"
+                                       placeholder="Search Posts"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                                 </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-             </div>
+                @endif
+
+
+            </div>
+
+
         </div>
+
+
+    </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
 
@@ -130,22 +159,22 @@
                 <div class="col-md-4" style="margin-right: -500px">
 
                     <!-- Blog Search Well -->
-                    <div class="well">
-                        <h4>Blog Search</h4>
-                        <div class="input-group">
-                            <form action="/" method="POST" role="search">
-                                {{ csrf_field() }}
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="q"
-                                           placeholder="Search Posts"> <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                         </button>
-                                        </span>
-                                </div>
-                            </form>
-                        </div>
-                     </div>
+                    {{--<div class="well">--}}
+                        {{--<h4>Blog Search</h4>--}}
+                        {{--<div class="input-group">--}}
+                            {{--<form action="/" method="POST" role="search">--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<div class="input-group">--}}
+                                    {{--<input type="text" class="form-control" name="q"--}}
+                                           {{--placeholder="Search Posts"> <span class="input-group-btn">--}}
+                                        {{--<button type="submit" class="btn btn-default">--}}
+                                        {{--<span class="glyphicon glyphicon-search"></span>--}}
+                                         {{--</button>--}}
+                                        {{--</span>--}}
+                                {{--</div>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                     {{--</div>--}}
 
                     <!-- Blog Categories Well -->
                     <div class="well">

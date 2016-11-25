@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
@@ -23,7 +24,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        $users = User::paginate(3);
+        $users = User::paginate(6);
         return view('admin.users.index',compact('users'));
     }
 
@@ -100,13 +101,7 @@ class AdminUsersController extends Controller
         return view('admin.users.edit',compact('user','roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UsersEditRequest $request, $id)
     {
         //
@@ -127,12 +122,7 @@ class AdminUsersController extends Controller
         return redirect('/admin/users');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
@@ -146,12 +136,8 @@ class AdminUsersController extends Controller
     }
 
 
+    public function directed(){
 
-    // Tomorrow will do!
-    //public function users($id){
-    //
-    //    $users=User::findOrfail($id);
-    //    $rolles=Role::lists('name','id')->all();
-    //    return view('layouts.layouts',compact('users','rolles'));
-    //}
+        return view('admin.index') ;
+    }
 }

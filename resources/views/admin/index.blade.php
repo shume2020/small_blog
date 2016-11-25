@@ -314,6 +314,18 @@
     </div>
     <!-- /.container-fluid -->
     <h1>Admin</h1>
+    The Role of the admin users
+<ul type="square" class="bg-primary" style="width: 80%;al">
+    <li>Managing the Users</li>
+    <li>...       the Posts</li>
+    <li>...        the media</li>
+    <li>....        the database</li>
+    <li>....        the comments and replies</li>
+
+</ul>
+
+
+
 </div>
 <!-- /#page-wrapper -->
 

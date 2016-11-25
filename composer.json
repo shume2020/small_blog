@@ -10,7 +10,8 @@
         "laravelcollective/html": "^5.2",
         "nesbot/carbon": "^1.21",
         "khill/lavacharts": "^3.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "triggerdesign/hermes": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

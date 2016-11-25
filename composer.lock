@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "876d8687e48d9fc8248eb0b2237f5636",
-    "content-hash": "48bbb81e37a79b188fe813a8d4434451",
+    "hash": "1dabd414bcd48f94dfe05a1e36eeca55",
+    "content-hash": "d177cab101a15eae8a2a90a92a3c721e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2101,6 +2101,56 @@
                 "dump"
             ],
             "time": "2016-07-26 08:03:56"
+        },
+        {
+            "name": "triggerdesign/hermes",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/triggerdesign/Hermes.git",
+                "reference": "62cde0079a92e30805b68ea6e40103c76168457f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/triggerdesign/Hermes/zipball/62cde0079a92e30805b68ea6e40103c76168457f",
+                "reference": "62cde0079a92e30805b68ea6e40103c76168457f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "laravel/framework": "5.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations",
+                    "src/commands",
+                    "src/models",
+                    "src/classes",
+                    "src/facades",
+                    "src/config"
+                ],
+                "psr-0": {
+                    "Triggerdesign\\Hermes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Simon Schneider",
+                    "email": "info@triggerdesign.de"
+                }
+            ],
+            "description": "A fully featured messaging package for Laravel.",
+            "keywords": [
+                "Messenger",
+                "chat",
+                "laravel",
+                "mail",
+                "messaging"
+            ],
+            "time": "2015-07-10 11:40:32"
         },
         {
             "name": "vlucas/phpdotenv",
