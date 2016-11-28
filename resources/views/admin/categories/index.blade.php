@@ -5,7 +5,9 @@
 
 
 <h1>All Catagories lists</h1>
-
+@if(Session::has('updated_category'))
+    <p class="bg-success pull-right">{{session('updated_category')}}</p>
+    @endif
 
 <div class="col-sm-4">
 

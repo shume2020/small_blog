@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class AdminCategoriesController extends Controller
 {
@@ -84,6 +85,8 @@ class AdminCategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        Session::flash('updated_category','The category has been updated');
         $input=$request->all();
         $categories=Category::findOrFail($id);
         $categories->update($input);

@@ -1,8 +1,10 @@
 <?php
 
+use App\Category;
 use App\Comment;
 use App\Photo;
 use App\Post;
+use App\Service;
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +23,8 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts=Post::all();
+    return view('welcome',compact('posts'));
 });
 //Route::get('/',function (){
 //   $posts=Post::all();
@@ -30,11 +33,18 @@ Route::get('/', function () {
 //});
 Route::get('/service',function (){
 
-    $users=Post::paginate(10);
+    $users=Service::paginate(10);
+
     return view('service',compact('users'));
 
 });
-
+//Route::get('/',function(){
+////    $categories=Category::findOrFail();
+//    $services=Service::paginate(10);
+//    return view('shared.sidebar',compact('services'));
+//
+//
+//})->name('home');
 
 
 //Contact us route
@@ -229,12 +239,12 @@ Route::any('/media',function(){
 Route::auth();
 //Route::get('/admin/users',['as'=>'admin.search','uses'=>'AdminUsersController@search']);
 
-Route::get('/home', 'HomeController@index');
+Route::resource('/home', 'HomeController');
 //Route::get('/admin/users',['as'=>'admin.search','uses'=>'AdminUsersController@search']);
 
 Route::group(['middleware'=>'admin'], function (){
 
-    Route::get('/download', 'AdminMediasController@getDownload');
+    Route::get('/admin/download/{filename}','AdminMediasController@getDownload');
     Route::get('/admin/checktime', 'AdminMediasController@getTimms');
     //Route::get('laracharts', 'ChartController@getLaraChart');
     Route::get('/admin',['as'=>'admin.index','uses'=>'AdminUsersController@directed']);
@@ -252,11 +262,13 @@ Route::group(['middleware'=>'admin'], function (){
 
     Route::resource('queries','QueryController');
     Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
+    Route::get('welcome/photolist',['as'=>'welcome.photolist','uses'=>'UserPostsController@getphoto']);
 Route::group(['middleware'=>'auth'],function (){
    Route::resource('author/post','AuthorPostsController');
    Route::resource('author/comment','AuthorCommentsController');
    Route::resource('author/comment/replies','AuthorRepliesController');
 
     Route::post('comment/reply','CommentRepliesController@createReply');
+    Route::resource('welcome','UserPostsController');
 
 });

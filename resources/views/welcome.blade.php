@@ -50,7 +50,7 @@
                         <h4 class="bg-warning pull-right" style="font-style: italic">Please login first</h4>
                     @endif
 
-                    <section id="slider"><!--slider-->
+                    <section id="slider" style="background-color: mintcream"><!--slider-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -154,20 +154,20 @@
                                         <img src="images/services/1.png" alt="" />
                                         <h2>6</h2>
                                         <p>WELCOME TO THESE PAGE</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                        <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2>6</h2>
                                             <p>WELCOME TO THESE PAGE</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                            <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>contact us</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Services</a></li>
+                                        <li><a href="{{url('/contact')}}"><i class="fa fa-plus-square"></i>contact us</a></li>
+                                        <li><a href="{{url('/service')}}"><i class="fa fa-plus-square"></i>Services</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,21 +179,21 @@
                                         <img src="images/services/2.png" alt="" />
                                         <h2>6</h2>
                                         <p>WELCOME TO THESE PAGE</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                        <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2>6</h2>
                                             <p>WELCOME TO THESE PAGE</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                            <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                         </div>
                                     </div>
                                     <img src="" class="new" alt="" />
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>contact us</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Services</a></li>
+                                        <li><a href="{{url('/contact')}}"><i class="fa fa-plus-square"></i>contact us</a></li>
+                                        <li><a href="{{url('/service')}}"><i class="fa fa-plus-square"></i>Services</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -205,21 +205,21 @@
                                         <img src="images/services/3.jpeg" alt="" />
                                         <h2>6</h2>
                                         <p>WELCOME TO THESE PAGE</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                        <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-chevron-up"></i>Read more..</a>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2>6</h2>
                                             <p>WELCOME TO THESE PAGE</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                            <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                         </div>
                                     </div>
                                     <img src="" class="new" alt="" />
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>contact us</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Services</a></li>
+                                        <li><a href="{{url('/contact')}}"><i class="fa fa-plus-square"></i>contact us</a></li>
+                                        <li><a href="{{url('/service')}}"><i class="fa fa-plus-square"></i>Services</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -229,16 +229,16 @@
                     <div class="category-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tshirt" data-toggle="tab">User lists</a></li>
-                                <li><a href="#blazers" data-toggle="tab">Posts title</a></li>
-                                <li><a href="#poloshirt" data-toggle="tab">Categories</a></li>
-                                <li><a href="#sunglass" data-toggle="tab">Photo lists</a></li>
-                                <li><a href="#kids" data-toggle="tab">Countries</a></li>
+                                <li class="active"><a href="#users" data-toggle="tab">Admin & Author</a></li>
+                                <li><a href="#posts" data-toggle="tab">Posts highlights</a></li>
+                                <li><a href="#categories" data-toggle="tab">Post Categories </a></li>
+                                <li><a href="#photo" data-toggle="tab">Post Photo lists</a></li>
+                                {{--<li><a href="#kids" data-toggle="tab">Countries</a></li>--}}
 
                             </ul>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-pane fade active in" id="tshirt" >
+                            <div class="tab-pane fade active in" id="users" >
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
@@ -246,7 +246,7 @@
                                                 <img src="images/author/1.jpg" alt="" />
                                                 <h2>1</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
@@ -259,7 +259,7 @@
                                                 <img src="images/author/2.jpg" alt="" />
                                                 <h2>2</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>read more...</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>read more...</a>
                                             </div>
 
                                         </div>
@@ -272,7 +272,7 @@
                                                 <img src="images/author/3.jpg" alt="" />
                                                 <h2>3</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>read more ...</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>read more ...</a>
                                             </div>
 
                                         </div>
@@ -285,7 +285,7 @@
                                                 <img src="images/author/4.jpg" alt="" />
                                                 <h2>4</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>read more...</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>read more...</a>
                                             </div>
 
                                         </div>
@@ -293,54 +293,38 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="blazers" >
-                                <div class="col-sm-3">
+                            <div class="tab-pane fade" id="posts" >
+                                <div class="col-sm-12">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="images/subscriber/5.jpg" alt="" />
-                                                <h2>1</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>read more...</a>
-                                            </div>
+                                                <div class="panel-group category-products" id="accordian" >
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
+                                                </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
+                                                <div class="brands_products"><!--brands_products-->
+                                                    <h2 style="margin-top: -36px">Post Lists</h2>
+                                                    <div class="brands-name">
+                                                        <ul class="nav nav-pills nav-stacked" style="">
+                                                            @if($posts)
+                                                            @foreach($posts as $post)
+
+                                                            <li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->body,50)}}</a></li>
+                                                                <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li>
+
+                                                            @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div><!--/brands_products-->
+
+                                                  {{--<img src="images/subscriber/5.jpg" alt="" />--}}
+                                                  <h2>1</h2>
+
+
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>read more about our service...</a>
                                             </div>
 
                                         </div>
@@ -348,59 +332,31 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="sunglass" >
-                                <div class="col-sm-3">
+                            <div class="tab-pane fade" id="photo" >
+                                <div class="col-sm-12">
                                     <div class="product-image-wrapper">
+
                                         <div class="single-products">
+
                                             <div class="productinfo text-center">
-                                                <img src="" alt="" />
+                                                <h2 style="">Post Photo Lists</h2>
+                                                @if($posts)
+                                                    @foreach($posts as $post)
+
+                                                        <a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->category->name,15)}}</a>
+                                                        <img src="{{URL::to('/images/'.$post->photo->file)}} ">
+
+                                                    @endforeach
+                                                @endif
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="kids" >
@@ -409,9 +365,11 @@
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="" alt="" />
+
+
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
@@ -424,7 +382,7 @@
                                                 <img src="" alt="" />
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
@@ -437,7 +395,7 @@
                                                 <img src="" alt="" />
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
@@ -450,7 +408,7 @@
                                                 <img src="" alt="" />
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
@@ -458,59 +416,39 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="poloshirt" >
-                                <div class="col-sm-3">
+                            <div class="tab-pane fade" id="categories" >
+                                <div class="col-sm-11">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="" alt="" />
+
+                                                <div class="panel-group category-products" id="accordian" >
+
+                                                    <h2 style="margin-top: 1px">Category</h2>
+                                                    <div class="brands-name">
+                                                        <ul class="nav nav-pills nav-stacked" style="margin: 30px;margin-top: 10px">
+                                                            @if($posts)
+                                                                @foreach($posts as $post)
+
+                                                                    <li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->category->name,15)}}</a></li>
+                                                                    <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li>
+
+                                                                @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                                 <h2>6</h2>
                                                 <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="" alt="" />
-                                                <h2>6</h2>
-                                                <p>WELCOME TO THESE PAGE</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div><!--/category-tab-->
@@ -528,7 +466,7 @@
                                                     <img src="images/subscriber/5.jpg" alt="" />
                                                     <h2>1</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>
@@ -541,7 +479,7 @@
                                                     <img src="images/subscriber/6.jpg" alt="" />
                                                     <h2>2</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>
@@ -554,7 +492,7 @@
                                                     <img src="images/subscriber/7.jpg" alt="" />
                                                     <h2>3</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>
@@ -569,7 +507,7 @@
                                                     <img src="images/subscriber/8.jpg" alt="" />
                                                     <h2>4</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>
@@ -582,7 +520,7 @@
                                                     <img src="images/subscriber/9.jpg" alt="" />
                                                     <h2>5</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>
@@ -595,7 +533,7 @@
                                                     <img src="images/subscriber/10.jpg" alt="" />
                                                     <h2>6</h2>
                                                     <p>WELCOME TO THESE PAGE</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-coffee"></i>Read more..</a>
+                                                    <a href="{{url('/service')}}" class="btn btn-default add-to-cart"><i class="fa fa-angle-double-right"></i>Read more..</a>
                                                 </div>
 
                                             </div>

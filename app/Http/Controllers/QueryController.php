@@ -13,6 +13,6 @@ class QueryController extends Controller
     public function index()
     {
        $pots=Post::all();
-        return view('welcome',compact('pots'));
+        return view('queries.index',compact('pots'));
     }
 }

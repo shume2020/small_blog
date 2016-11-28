@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
@@ -69,14 +70,13 @@ public function update(){
 
 
 }
-    public function getDownload(){
-        //PDF file is stored under project/public/download/info.pdf
-//        $entry= Photo::where('file','=',$filename)->firstOrFail();
-//        $path = Storage::disk('local')->get($entry->filename);
-////        URL::secure(public_path().'/images/'.$entry->filename);
-//        return(new response($path,200))->header('Content-Type',$entry->mime);
+    public function getDownload($filename){
 
-       return response()->download(public_path()."/images/1477981407image_1.jpg");
+        Session::flash('media_downloded','The media has been downloaded');
+        $entry= Photo::where('file','=',$filename)->firstOrFail();
+          $path= public_path()."/images/".$entry->file;
+        return response()->download($path);
+//       return response()->download(public_path()."/images/1477981407image_1.jpg");
     }
 public function getTimms(){
 

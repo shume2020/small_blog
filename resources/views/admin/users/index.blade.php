@@ -31,6 +31,10 @@
 
 
 
+@if(Session::has('updated_user'))
+   <p class="alert-info pull-right">{{session('updated_user')}}</p>
+
+    @endif
 
 
     @if(Session::has('Deleted_user'))

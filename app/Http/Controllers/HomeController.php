@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests;
 use App\Post;
+use App\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,6 +30,14 @@ class HomeController extends Controller
 
         $posts=Post::all();
         return view('welcome',compact('posts'));
+    }
+
+    public function create()
+    {
+
+        $categories=Category::lists('name','id')->all();
+        $posts= Service::all();
+        return view('shared.sidebar',compact('posts','categories'));
     }
 
 //    public function about(){

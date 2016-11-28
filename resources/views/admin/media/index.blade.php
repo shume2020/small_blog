@@ -23,15 +23,23 @@
         </div>
     </div>
 </div>
+@if(Session::has('media_downloded'))
+  <p class="bg-info pull-right" >{{session('media_downloded')}}</p>
+
+  @endif
     @if($photos)
 
-    <table class="table">
+    <table class="table" style="width: 95%">
         <thead>
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>created</th>
-              <th>Updated</th>
+              <th>Photo</th>
+            <th>created at</th>
+              <th>Updated    at      </th>
+              <th>Download</th>
+              <th>Delete</th>
+
           </tr>
         </thead>
         <tbody>
@@ -41,10 +49,10 @@
               <td>{{$photo->id}}</td>
                <td><a href="{{route('admin.media.index')}}">{{$photo->file}}</a></td>
                 {{--<td><img src="{{public_path().$photo->file}}" alt="">--}}
-                    <td><img src="{{ URL::to('/images/' . $photo->file) }}" height="50"  alt="{{ $photo->file }}" /></td>
-               <td>{{$photo->created_at?$photo->created_at->diffForHumans():'no date'}}</td>
-               <td>{{$photo->updated_at?$photo->updated_at->diffForHumans():'No date'}}</td>
-              <td> <a href="/download" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> DownloadFiles </a></td>
+                    <td><img src="{{ URL::to('/images/' . $photo=='image/x-jg')? URL::to('/images/' . $photo->file):"Applications" }}" height="50"  alt="{{ $photo->file }}" /></td>
+               <td>{{str_limit($photo->created_at?$photo->created_at->diffForHumans():'no date',6)}}</td>
+               <td>{{str_limit($photo->updated_at?$photo->updated_at->diffForHumans():'No date',6)}}</td>
+              <td> <a href="/admin/download/{{$photo->file}}"  class="btn btn-large pull-right"><i class="fa fa-download"> </i> Download </a></td>
               {{--<td>--}}
 
               {{--{!! Form::open(['method'=>'PATCH','action'=>'AdminMediasController@download']) !!}--}}

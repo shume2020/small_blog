@@ -23,9 +23,11 @@
         </div>
     </div>
 
-
+@if(Session::has('Updated_post'))
+    <p class="bg-success pull-right">{{session('Updated_post')}}</p>
+    @endif
     @if(Session::has('Deleted_post'))
-        <p class="bg-danger pull-right">{{session('Deleted_post')}}</p>
+        <p class="bg-danger ">{{session('Deleted_post')}}</p>
 
         @endif
 
