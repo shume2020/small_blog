@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="{!! asset('images/iride-ui-icon-pack-300x300.ico') !!}"/>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,16 +115,19 @@
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{url('home')}}" class="active">Home</a></li>
                             <li><a href="{{url('/service')}}">Services</a></li>
-                            <li><a href="{{url('/post/1')}}">Blog</a></li>
+                            <li><a href="{{url('/welcome/show')}}">Blog Lists</a></li>
                             <li><a href="{{url('/contact')}}" >Contact Us</a></li>
                             <li><a href="{{url('/welcome/photolist')}}">Media</a></li>
-                                @if(Auth::user()->role->name=='author')
+                                @if(Auth::user()->role_id==0 && Auth::user()->is_active==0)
+                                <li><a href="#">Subscriber</a></li>
+
+                                @elseif(Auth::user()->role->name=='author')
                                 <li><a href="{{route('author.post.create')}}">Create Posts</a></li>
                                 <li><a href="{{route('author.post.index')}}">Posts</a></li>
 
                                 {{--<a href="{{url('/service')}}"><i class="fa fa-coffee"></i>Service</a>--}}
-                                @endif
-                            @if(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
+
+                                @elseif(Auth::user()->role->name=='administrator' && Auth::user()->is_active==1)
                                 <li><a href="{{route('admin.index')}}">Admin page</a></li>
 
                                 @endif

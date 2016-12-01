@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     $posts=Post::all();
-    return view('welcome',compact('posts'));
+    $categories=Category::all();
+    return view('welcome',compact('posts','categories'));
 });
 //Route::get('/',function (){
 //   $posts=Post::all();
@@ -101,13 +102,16 @@ Route::post('contact',['as'=>'contact_store','uses'=>'AboutController@store']);
 
 Route::any('/posts',function(){
     $q = Input::get ( 'q' );
-    $post = Post::where('title','LIKE','%'.$q.'%')
+    $post = Post::whereHas('category',function ($query) use($q) {
+        $query->where('name', 'LIKE', '%' . $q . '%')->orWhere('id', 'LIKE', '%' . $q . '%');
+    })-> orwhere('title','LIKE','%'.$q.'%')
         ->orWhere('body','LIKE','%'.$q.'%')
         ->orWhere('user_id','LIKE','%'.$q.'%')
         ->orWhere('category_id','LIKE','%'.$q.'%')
         ->orWhere('created_at','LIKE','%'.$q.'%')
         ->orWhere('updated_at','LIKE','%'.$q.'%')
 //        ->orWhere('post()->category->name','LIKE','%'.$q.'%')
+        ->orderBy('created_at','desc')
         ->paginate(5);
 
 
@@ -263,6 +267,9 @@ Route::group(['middleware'=>'admin'], function (){
     Route::resource('queries','QueryController');
     Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
     Route::get('welcome/photolist',['as'=>'welcome.photolist','uses'=>'UserPostsController@getphoto']);
+    Route::get('welcome/show',['as'=>'welcome.show','uses'=>'UserPostsController@show']);
+    Route::get('shared/sidebar',['as'=>'shared.sidebar','uses'=>'HomeController@sidebar']);
+
 Route::group(['middleware'=>'auth'],function (){
    Route::resource('author/post','AuthorPostsController');
    Route::resource('author/comment','AuthorCommentsController');

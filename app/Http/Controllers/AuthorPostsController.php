@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthorPostsController extends Controller
 {
@@ -68,18 +69,20 @@ class AuthorPostsController extends Controller
     {
         //
 
-        $input=$request->all();
-        if($file=$request->file('photo_id')){
-            $name=time().$file->getClientOriginalName();
-            $file->move('images',$name);
-            $photo = Photo::create(['file'=>$name]);
-            $input['photo_id'] = $photo->id;
+        Session::flash('Updated_post','The post has been updated.by'.Auth::user()->name);
+        $post= Post::findOrFail($id);
+        $input= $request->all();
+        if($file= $request->file('photo_id')){
 
+            $name= time() . $file->getClientOriginalName();
+            $file->move('images',$name);
+
+            $photo =Photo::create(['file'=>$name]);
+            $input['photo_id']=$photo->id;
         }
 
-        var_dump($input);
-        Auth::user()->posts()->whereId($id)->first()->update($input);
-        return redirect('/author/posts');
+        $post->update($input);
+        return redirect('/author/post');
 
     }
     public function destroy($id)

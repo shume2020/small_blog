@@ -28,18 +28,18 @@
 
     <!-- Post Content -->
     <p class="lead">{!! nl2br(e($post->body)) !!}</p>
+    @if(\Illuminate\Support\Facades\Session::has('comment_message'))
 
+        <p class="bg-info pull-right">{{session('comment_message')}}</p>
+
+
+
+    @endif
 
     {{--<p class="lead">Catagory   <tab>  </tab>{{$post->category->name}}</p>--}}
     <hr>
 
-    @if(\Illuminate\Support\Facades\Session::has('comment_message'))
 
-        <p class="bg-success">{{session('comment_message')}}</p>
-
-
-
-        @endif
 
     <!-- Blog Comments -->
 
@@ -52,17 +52,17 @@
         {!! Form::open(['method'=>'POST','action'=>'PostCommentsController@store']) !!}
 
             <input type="hidden" name="post_id" value="{{$post->id}}">
-        <input type="hidden" name="author" value="{{$post->user->name}}">
+            <input type="hidden" name="author" value="{{$post->user->name}}">
            
             <div class="form-group">
-                {!! Form::label('body','Body:') !!}
-                {!! Form::textarea('body',null,['class'=>'form-control','rows'=>3]) !!}
+            {!! Form::label('body','Body:') !!}
+            {!! Form::textarea('body',null,['class'=>'form-control','rows'=>3]) !!}
 
 
             </div>
             <div class="form-group">
 
-                {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
 
             </div>
               {!! Form::close() !!}

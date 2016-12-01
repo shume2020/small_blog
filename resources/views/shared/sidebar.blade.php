@@ -1,46 +1,63 @@
 
-<div class="panel-group category-products" id="accordian" ><!--category-productsr-->
-    {{--<div class="panel panel-default">--}}
-        {{----}}
-        {{--<ul class="nav nav-pills nav-stacked" style="margin-top: -43px">--}}
+{{--<div class="panel-group category-products" id="accordian" ><!--category-productsr-->--}}
+    {{--<div class="brands-name">--}}
 
 
-        {{--@if($posts)--}}
-            {{--@foreach($posts as $post)--}}
-                {{--<li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{$post->category->name}}</a></li>--}}
-            {{--@endforeach--}}
-            {{--@endif--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-<h2 style="margin-top: 34px">Category</h2>
-<div class="brands-name">
-    <ul class="nav nav-pills nav-stacked" style="margin: 30px;margin-top: -40px">
-        @if($posts)
-            @foreach($posts as $post)
+<div class="panel-group" id="accordian" ><!--category-productsr-->
+        <h2 style="margin-top: 34px">Category</h2>
+        <div class="brands-name">
+            <ul class="nav nav-pills " style="margin: 30px;margin-top: -40px;margin-left: -10px">
 
-                <li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{$post->category->name}}</a></li>
+                <ul class="nav navbar-top-links navbar-right">
 
-            @endforeach
-        @endif
-    </ul>
-</div>
-</div><!--/category-products-->
+                    @if($categories || $posts)
+                        @foreach($categories as $category)
 
-<div class="brands_products"><!--brands_products-->
-    <h2 style="margin-top: -36px">Post Lists</h2>
-    <div class="brands-name">
-        <ul class="nav nav-pills nav-stacked" style="margin: 34px;margin-top:-41px">
-            @if($posts)
-                @foreach($posts as $pos)
+                            @foreach($posts as $post)
+                                @if($post->category->name==$category->name)
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    {{$category->name}}<i class="fa fa-caret-down"></i>
+                                </a><br>
 
-                    <li><a href='{{route('home.post',$pos->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($pos->title,10)}}</a></li>
+
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="{{route('home.post',$post->id)}}"><i class=" "></i>    {{ $post->title}} </a>
+                                    </li><br/>
+                                    @endif
+
+                                    @endforeach
+                                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Role {{Auth::user()->role->name}}</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="divider"></li>--}}
+                                    {{--<li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>--}}
+                                    {{--</li>--}}
+                                </ul>
+                                <!-- /.dropdown-user -->
+                            </li><br/>
 
                     @endforeach
-                @endif
-        </ul>
-    </div>
-</div><!--/brands_products-->
 
+                @endif
+                <!-- /.dropdown -->
+
+                </ul>
+
+                    {{--@if($posts)--}}
+                            {{--@foreach($posts as $post)--}}
+
+                                    {{--<li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{$post->category->name}}<tab> ..</tab>{{str_limit($post->created_at->diffForHumans(),10)}}</a></li>--}}
+
+                            {{--@endforeach--}}
+                    {{--@endif--}}
+                            {{--{{$posts->render()}}--}}
+            </ul>
+
+        </div>
+        </div><!--/brands_products-->
+   {{--@endif--}}
 <div class="shipping text-center"><!--shipping-->
     {{--<img src="{{asset('images/main/2.png')}}" alt="" />--}}
 </div><!--/shipping-->

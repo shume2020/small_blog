@@ -317,15 +317,48 @@
     </div>
     <!-- /.container-fluid -->
     <h1>Admin</h1>
-    The Role of the admin users
-<ul type="square" class="bg-primary" style="width: 80%;al">
-    <li>Managing the Users</li>
-    <li>...       the Posts</li>
-    <li>...        the media</li>
-    <li>....        the database</li>
-    <li>....        the comments and replies</li>
+    <br/>
+   Reports
+    <hr/>
 
-</ul>
+<div class="row">
+
+    <ul type="square" class="alert-success" style="width: 80%;">
+
+    <div class="col-sm-6 ">
+
+
+        <p>Total number of users <i style="color: rgba(47, 49, 255, 0.68);padding-left: 10em">{!!\App\User::count() !!}</i> </p>
+        <hr>
+        <p>Total number of posts <i style="color: rgba(47, 49, 255, 0.68);padding-left: 10em"> {!! \App\Post::count() !!}</i> </p>
+        <hr/>
+        <p>Total number of Category <i style="color: rgba(47, 49, 255, 0.68);padding-left: 8em">{!! \App\Category::count() !!}</i>
+        <hr/>
+        </p><p>Total number of services <i style="color: rgba(47, 49, 255, 0.68);padding-left: 8em"> {!! \App\Service::count() !!}</i> </p>
+        <hr/>
+        <p>Total number of Media <i style="color: rgba(47, 49, 255, 0.68);padding-left: 9em"> {!! \App\Photo::count() !!}</i> </p>
+        <hr/>
+        <p>Total number of Media  <i style="color: rgba(47, 49, 255, 0.68);padding-left: 8em">{!! \App\Comment::count() !!}</i> </p>
+        <hr/>
+
+        <p>Total number of CommentReply <i style="color: rgba(47, 49, 255, 0.68);padding-left: 4em"">{!! \App\CommentReply::count() !!}</i> </p>
+
+
+
+    </div>
+    </ul>
+
+    <div class="col-sm-6">
+        {!!$users=\App\User::count() !!}
+@if($users>20)
+    <h4>Congratulation you have more than {!! \App\User::count()  !!} </h4>
+
+        @endif
+
+    </div>
+</div>
+
+
 
 
 

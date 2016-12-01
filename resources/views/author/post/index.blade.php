@@ -10,6 +10,12 @@
 
     @endif
 
+    @if(Session::has('Updated_post'))
+        @endif
+
+
+        <p class="bg-success pull-right">{{session('Updated_post')}}</p>
+
     <table class="table" style="align-self: auto;margin: 20px;margin-left: 120px;font-size: 12px;padding:50px; width: 80%" >
         <thead>
         <tr>

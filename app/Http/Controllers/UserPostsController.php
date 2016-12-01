@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Photo;
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
@@ -74,5 +75,14 @@ class UserPostsController extends Controller
         return view('welcome.photolist',compact('photos'));
 
     }
+
+    public function show(){
+
+        $posts=Post::findOrFail(1)->orderBy('created_at','desc')->get();
+        return view('welcome.show',compact('posts'));
+
+    }
+
+
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="{!! asset('images/iride-ui-icon-pack-300x300.ico') !!}"/>
 
 <head>
 

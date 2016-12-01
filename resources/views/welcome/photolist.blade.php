@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>@yield('page-title')</title>
+    <link rel="icon" href="{!! asset('images/iride-ui-icon-pack-300x300.ico') !!}"/>
     <style>
         div.img {
             border: 1px solid #ccc;
@@ -17,6 +19,7 @@
         }
 
     </style>
+
 </head>
 
 @extends('layouts.layouts')
@@ -27,10 +30,8 @@
     @if($photos)
     
     @foreach($photos as $photo)
-        {{--@if($photo->id%3==0)--}}
-            {{--<br/>--}}
-            {{--@endif--}}
                 <a href="#"> <img width="300" class="active img" src="{{URL::to('/images/'.$photo->file)}} " alt="{{$photo->file}}" style="align-self: center;"></a>
+
         
         @endforeach
         @else

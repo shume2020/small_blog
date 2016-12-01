@@ -39,7 +39,7 @@
                 </table>
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-5">
-                        {{$details->render()}}
+                        {{--{{$details->render()}}--}}
 
                     </div>
                     @else
@@ -47,7 +47,7 @@
                        {{--{{$message}}--}}
                     @endif
                     @else
-                        <h4 class="bg-warning pull-right" style="font-style: italic">Please login first</h4>
+                        <h4 class="bg-info pull-right" style="font-style: italic">These Guest page Register and login to access the informations</h4>
                     @endif
 
                     <section id="slider" style="background-color: mintcream"><!--slider-->
@@ -134,8 +134,8 @@
             </div>
         </div>
     </section><!--/slider-->
-
-    <section style="    margin-left: -100px">
+@if(Auth::check())
+    <section style="    margin-left: -50px">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -143,10 +143,10 @@
                         @include('shared.sidebar')
                     </div>
                 </div>
-
+@endif
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Company services</h2>
+                        <h2 class="title text-center" style="margin-top: 46px">Company Advertisement</h2>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -225,18 +225,20 @@
                             </div>
                         </div>
                     </div><!--features_items-->
-
+        @if(Auth::check())
                     <div class="category-tab"><!--category-tab-->
                         <div class="col-sm-12">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#users" data-toggle="tab">Admin & Author</a></li>
+                            <ul class="nav nav-tabs" style=" width:90%;margin-left: 20px">
+                                <li><a href="#users" data-toggle="tab">Admin & Author</a></li>
                                 <li><a href="#posts" data-toggle="tab">Posts highlights</a></li>
                                 <li><a href="#categories" data-toggle="tab">Post Categories </a></li>
-                                <li><a href="#photo" data-toggle="tab">Post Photo lists</a></li>
+                                {{--<li><a href="#photo" data-toggle="tab">Post Photo lists</a></li>--}}
                                 {{--<li><a href="#kids" data-toggle="tab">Countries</a></li>--}}
 
                             </ul>
+
                         </div>
+
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="users" >
                                 <div class="col-sm-3">
@@ -307,20 +309,39 @@
                                                     <h2 style="margin-top: -36px">Post Lists</h2>
                                                     <div class="brands-name">
                                                         <ul class="nav nav-pills nav-stacked" style="">
-                                                            @if($posts)
-                                                            @foreach($posts as $post)
+                                                            <table class="table" style="color: #99cb84;align-self: center">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Body Highlight</th>
+                                                                    <th>Post picture</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @if($posts)
+                                                                    @foreach($posts as $post)
+                                                                  <tr class="success">
+                                                                    <td><li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->body,50)}}</a></li>
+                                                                    </td>
+                                                                    <td> <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li></td>
 
-                                                            <li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->body,50)}}</a></li>
-                                                                <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li>
+                                                                  </tr>
+                                                                    @endforeach
+                                                                @endif
 
-                                                            @endforeach
-                                                            @endif
+                                                                </tbody>
+                                                              </table>
+                                                            {{--{{$posts->render()}}--}}
+
+
+
+
+
+
                                                         </ul>
                                                     </div>
                                                 </div><!--/brands_products-->
 
-                                                  {{--<img src="images/subscriber/5.jpg" alt="" />--}}
-                                                  <h2>1</h2>
+                                                    <h2>1</h2>
 
 
                                                 <p>WELCOME TO THESE PAGE</p>
@@ -329,6 +350,7 @@
 
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -427,14 +449,34 @@
                                                     <h2 style="margin-top: 1px">Category</h2>
                                                     <div class="brands-name">
                                                         <ul class="nav nav-pills nav-stacked" style="margin: 30px;margin-top: 10px">
-                                                            @if($posts)
-                                                                @foreach($posts as $post)
 
-                                                                    <li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->category->name,15)}}</a></li>
-                                                                    <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li>
+                                                            <table class="table" style="color: salmon">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Category_Name</th>
+                                                                    <th >Category Photo</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @if($posts)
+                                                                    @foreach($posts as $post)
+                                                                  <tr class="success">
+                                                                    <td><li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{str_limit($post->category->name,15)}}</a></li></td>
+                                                                    <td> <li><img src="{{URL::to('/images/'.$post->photo->file)}} "></li></td>
+
+                                                                  </tr>
+
+
+
+
+
+
 
                                                                 @endforeach
                                                             @endif
+                                                                </tbody>
+                                                            </table>
+                                                            {{--{{$posts->render()}}--}}
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -453,7 +495,7 @@
                         </div>
                     </div><!--/category-tab-->
 
-                    <div class="recommended_items"><!--recommended_items-->
+                    <div class="recommended_items" style="margin: 51px;width: 75%"><!--recommended_items-->
                         <h2 class="title text-center">Subscribers</h2>
 
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -549,11 +591,13 @@
                             </a>
                         </div>
                     </div><!--/recommended_items-->
-
+@endif
                 </div>
             </div>
         </div>
     </section>
+    </div>
+</div>
 {{--<div class="container">--}}
     {{--<div class="row">--}}
         {{--<div class="col-md-10 col-md-offset-1">--}}
