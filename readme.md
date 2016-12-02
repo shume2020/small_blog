@@ -1,5 +1,7 @@
 # Laravel PHP Framework
-#This is a blog site for small companies for closed communications as well as possible to make public and used it as website.
+
+
+##This is a blog site for small companies for closed communications as well as possible to make public and used it as website.
 
 1. The Admin can control all the functions like adding users,posts,categories,media and charts.
 2. The Author user can create,edit,delete and update posts
