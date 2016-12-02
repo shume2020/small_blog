@@ -1,4 +1,15 @@
 # Laravel PHP Framework
+#This is a blog site for small companies for closed communications as well as possible to make public and used it as website.
+
+1. The Admin can control all the functions like adding users,posts,categories,media and charts.
+2. The Author user can create,edit,delete and update posts
+3. The subscriber can read the posts and give a comment
+4. The Guest user can see the service and possible to contact the administrator
+5. Only the admin user can approve or unapprove the comments and replies. unless the admin approve the comments and replies,   the post page can not display the comments
+6. Check composer.json to install all dependencies
+
+
+## This is the intial phase and will continue to add additional features
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
