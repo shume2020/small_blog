@@ -17,106 +17,107 @@ class AuthorRepliesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+        {
 
-//        $replies = CommentReply::paginate(4);
-//        return view('author.comment.replies.show',compact('replies'));
-    }
+    //        $replies = CommentReply::paginate(4);
+    //        return view('author.comment.replies.show',compact('replies'));
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
     public function create()
-    {
-        //
-    }
+        {
+            //
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
     public function store(Request $request)
-    {
+        {
 
 
 
-        //
-    }
-    public function createReply(Request $request){
-        $user = Auth::user();
+            //
+        }
+    public function createReply(Request $request)
+        {
+            $user = Auth::user();
 
-        $data=[
-
-
-            'comment_id'=> $request->comment_id,
-            'author' =>$user->name,
-            'email'=>$user->email,
-            'photo'=>$user->photo->file,
-            'body' =>$request->body
-
-        ];
-        CommentReply::create($data);
-        $request->session()->flash('reply_message','Your message reply has been submitted');
-        return redirect()->back();
-    }
+            $data=[
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+                'comment_id'=> $request->comment_id,
+                'author' =>$user->name,
+                'email'=>$user->email,
+                'photo'=>$user->photo->file,
+                'body' =>$request->body
+
+            ];
+            CommentReply::create($data);
+            $request->session()->flash('reply_message','Your message reply has been submitted');
+            return redirect()->back();
+        }
+
+
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function show($id)
-    {
-        //
-        $comment= Comment::findOrFail($id);
-        $replies= $comment->replies;
-        return view('author.comment.replies.show',compact('replies','comment'));
-    }
+        {
+            //
+            $comment= Comment::findOrFail($id);
+            $replies= $comment->replies;
+            return view('author.comment.replies.show',compact('replies','comment'));
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function edit($id)
-    {
-        //
-    }
+        {
+            //
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function update(Request $request, $id)
-    {
-        //
-        CommentReply::findOrFail($id)->update($request->all());
-        return redirect()->back();
+        {
+            //
+            CommentReply::findOrFail($id)->update($request->all());
+            return redirect()->back();
 
 
-    }
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function destroy($id)
-    {
-        //
+        {
+            //
 
-        CommentReply::findOrFail($id)->delete();
-        return redirect()->back();
-    }
+            CommentReply::findOrFail($id)->delete();
+            return redirect()->back();
+        }
 }

@@ -39,46 +39,15 @@ Route::get('/service',function (){
     return view('service',compact('users'));
 
 });
-//Route::get('/',function(){
-////    $categories=Category::findOrFail();
-//    $services=Service::paginate(10);
-//    return view('shared.sidebar',compact('services'));
-//
-//
-//})->name('home');
 
-
-//Contact us route
 
 Route::get('contact',['as'=>'contact','uses'=>'AboutController@create']);
 Route::post('contact',['as'=>'contact_store','uses'=>'AboutController@store']);
 
-//Route::any('/contact',function (){
-//     $data= [
-//         'to'=>Input::get('to'),
-//         'from'=>Input::get('from'),
-//         'subject'=> Input::get('subject'),
-//         'body'=> Input::get('body')
-//     ] ;
-//
-////        $to=Input::get('to');
-////        $from= Input::get('from');
-////        $subject= Input::get('subject');
-////        $body= Input::get('body');
-//
-//
-//    Mail::send('contact', $data, function ($message) {
-//
-//        $message->to('to', 'shumex')->subject('subject');
-//
-//    });
-//     return view('contact');
-////
-//});
 
 
 
-// sending email directly
+// sending email without forms
 // Route::get('/mail',function () {
 //
 //     $data = [
@@ -98,6 +67,9 @@ Route::post('contact',['as'=>'contact_store','uses'=>'AboutController@store']);
 //
 // });
 
+
+
+//*************************all search are called from route we didn't used controller for searching results*******//
 //Search closure function for the general search
 
 Route::any('/posts',function(){
@@ -158,27 +130,7 @@ Route::any('/users',function(){
             return view ('admin.users.welcome2')->withMessage('No Details found. Try to search again !');
 
 });
-//common search
-//Route::any('/allsearch',function(){
-//    $q = Input::get ( 'q' );
-//    $post = Post::whereHas('category',function ($query) use($q){
-//        $query->where('name','LIKE','%'.$q.'%')->orWhere('id','LIKE','%'.$q.'%');
-//
-//    })->orWhere('title','LIKE','%'.$q.'%')
-//        ->orWhere('body','LIKE','%'.$q.'%')
-//        ->orWhere('user_id','LIKE','%'.$q.'%')
-//        ->orWhere('category_id','LIKE','%'.$q.'%')
-//        ->orWhere('created_at','LIKE','%'.$q.'%')
-//        ->orWhere('updated_at','LIKE','%'.$q.'%')
-////        ->orWhere('post()->category->name','LIKE','%'.$q.'%')
-//        ->paginate(6);
-//
-//
-//    if(count($post))
-//        return view('admin.posts.search')->withDetails($post)->withQuery ( $q );
-//    else
-//        return view ('admin.posts.search')->withMessage('No Details found. Try to search again !');
-//});
+
 
 //all posts
 Route::any('/allsearch',function(){
@@ -208,27 +160,6 @@ Route::any('/allsearch',function(){
         return view ('admin.search')->withMessage('No Details found. Try to search again !');
 });
 
-
-//    $q = Input::get ( 'q' );
-//    $post= Post::where('title','LIKE','%'.$q.'%')->get();
-//    $user = User::where('name', 'LIKE','%'.$q.'%')->get();
-//    $photo = Photo::where('file', 'LIKE','%'.$q.'%')->get();
-//    $result=array_merge($post->toArray(),$user->toArray(),$photo->toArray());
-////    $result->paginate(10);
-//
-//
-////    $users = Comment::where('body','LIKE','%'.$q.'%')
-////          ->union($post)
-////          ->union($user)
-////          ->union($photo)
-////         ->paginate(5);
-//
-//    if(count($result))
-//        return view('admin.search')->withDetails($result)->withQuery ( $q );
-//    else
-//        return view ('admin.search')->withMessage('No Details found. Try to search again !');
-//
-//});
 //Search for admin media
 Route::any('/media',function(){
     $q = Input::get ( 'q' );
@@ -269,6 +200,7 @@ Route::group(['middleware'=>'admin'], function (){
     Route::get('welcome/photolist',['as'=>'welcome.photolist','uses'=>'UserPostsController@getphoto']);
     Route::get('welcome/show',['as'=>'welcome.show','uses'=>'UserPostsController@show']);
     Route::get('shared/sidebar',['as'=>'shared.sidebar','uses'=>'HomeController@sidebar']);
+    Route::get('welcome/{id}',['as'=>'welcome.edit','uses'=>'HomeController@show']);
 
 Route::group(['middleware'=>'auth'],function (){
    Route::resource('author/post','AuthorPostsController');

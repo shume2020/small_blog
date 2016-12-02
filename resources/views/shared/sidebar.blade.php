@@ -4,55 +4,34 @@
 
 
 <div class="panel-group" id="accordian" ><!--category-productsr-->
-        <h2 style="margin-top: 34px">Category</h2>
-        <div class="brands-name">
-            <ul class="nav nav-pills " style="margin: 30px;margin-top: -40px;margin-left: -10px">
+        <h2 style="margin-top: 24px">Category</h2>
+        <div class="brands-name" style="background-color: white;border-color: #2ca02c">
+            <ul class="nav nav-pills " style="margin: 30px;margin-top: 20px;margin-left: 20px">
 
                 <ul class="nav navbar-top-links navbar-right">
 
-                    @if($categories || $posts)
+                    @if($categories)
                         @foreach($categories as $category)
 
-                            @foreach($posts as $post)
-                                @if($post->category->name==$category->name)
+                            <li><a href='{{route('welcome.edit',$category->id)}}'> <span class="pull-right color bg-primary"></span>{{$category->name}}<sup>
+
+                                        @if($category->created_at > \Carbon\Carbon::now()->subHours(4))
+                                            <i style="background-color: wheat; color: red;align-self: center">latest</i>
+                                        @endif
+
+
+                                    </sup></a>
+
+                            </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    {{$category->name}}<i class="fa fa-caret-down"></i>
-                                </a><br>
 
-
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="{{route('home.post',$post->id)}}"><i class=" "></i>    {{ $post->title}} </a>
-                                    </li><br/>
-                                    @endif
-
-                                    @endforeach
-                                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Role {{Auth::user()->role->name}}</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li class="divider"></li>--}}
-                                    {{--<li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>--}}
-                                    {{--</li>--}}
-                                </ul>
-                                <!-- /.dropdown-user -->
-                            </li><br/>
-
-                    @endforeach
+                      @endforeach
 
                 @endif
                 <!-- /.dropdown -->
 
                 </ul>
 
-                    {{--@if($posts)--}}
-                            {{--@foreach($posts as $post)--}}
-
-                                    {{--<li><a href='{{route('home.post',$post->id)}}'> <span class="pull-right color bg-primary"></span>{{$post->category->name}}<tab> ..</tab>{{str_limit($post->created_at->diffForHumans(),10)}}</a></li>--}}
-
-                            {{--@endforeach--}}
-                    {{--@endif--}}
-                            {{--{{$posts->render()}}--}}
             </ul>
 
         </div>

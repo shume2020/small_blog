@@ -13,7 +13,7 @@
     @if(count($users)>0)
 
        @foreach($users as $user)
-                 <tr class="success">
+                 <tr class="bg-info">
                    <td>{{$user->title}}</td>
                    <td>{{str_limit($user->description),10}}</td>
                    <td>{{$user->location}}</td>

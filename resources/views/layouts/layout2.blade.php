@@ -161,23 +161,6 @@
                 <!-- Blog Sidebar Widgets Column -->
                 <div class="col-md-4" style="margin-right: -500px">
 
-                    <!-- Blog Search Well -->
-                    {{--<div class="well">--}}
-                        {{--<h4>Blog Search</h4>--}}
-                        {{--<div class="input-group">--}}
-                            {{--<form action="/" method="POST" role="search">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<div class="input-group">--}}
-                                    {{--<input type="text" class="form-control" name="q"--}}
-                                           {{--placeholder="Search Posts"> <span class="input-group-btn">--}}
-                                        {{--<button type="submit" class="btn btn-default">--}}
-                                        {{--<span class="glyphicon glyphicon-search"></span>--}}
-                                         {{--</button>--}}
-                                        {{--</span>--}}
-                                {{--</div>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
-                     {{--</div>--}}
 
                     <!-- Blog Categories Well -->
                     <div class="well">
@@ -187,10 +170,6 @@
                                 <ul class="list-unstyled">
                                     <li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>
                                     </li>
-                                    {{--<li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li><a href="#">{{$post->category ? $post->category->name:'uncatagorized'}}</a>--}}
-                                    {{--</li>--}}
                                 </ul>
                             </div>
                         </div>

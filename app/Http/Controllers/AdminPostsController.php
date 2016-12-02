@@ -20,156 +20,142 @@ class AdminPostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+        {
+            //
 
-        $posts= Post::paginate(6);
+            $posts= Post::orderBy('created_at','desc')->paginate(6);
 
-        return view('admin.posts.index',compact('posts'));
+            return view('admin.posts.index',compact('posts'));
 
+        }
 
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
     public function create()
-    {
-        //
+        {
+            //
 
-        $categories=Category::lists('name','id')->all();
+            $categories=Category::lists('name','id')->all();
 
-        return view('admin.posts.create',compact('categories'));
-    }
+            return view('admin.posts.create',compact('categories'));
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
     public function store(PostsCreateRequest $request)
-    {
-        //
+        {
+            //
 
-        $input=$request->all();
-        $user=Auth::user();
-        if($file=$request->file('photo_id')){
+            $input=$request->all();
+            $user=Auth::user();
+            if($file=$request->file('photo_id')){
 
-            $name=time().$file->getClientOriginalName();
-            $file->move('images',$name);
-            $photo=Photo::create(['file'=>$name]);
-            $input['photo_id']=$photo->id;
+                $name=time().$file->getClientOriginalName();
+                $file->move('images',$name);
+                $photo=Photo::create(['file'=>$name]);
+                $input['photo_id']=$photo->id;
 
 
+            }
+          $user->posts()->create($input);
+            return redirect('/admin/posts');
+
+
+    //        return view('admin.posts.edit');
         }
-      $user->posts()->create($input);
-        return redirect('/admin/posts');
 
-
-//        return view('admin.posts.edit');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function shows($id)
-    {
-        //
-        $post=Post::findOrFail($id);
-       // $posts=Post::findOrFail($id);
-        return view('welcome',compact('post'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-
-        $post= Post::findOrFail($id);
-        $categories=Category::lists('name','id')->all();
-        return view('admin.posts.edit',compact('post','categories'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-
-
-        Session::flash('Updated_post','The post has been updated');
-        $post= Post::findOrFail($id);
-        $input= $request->all();
-        if($file= $request->file('photo_id')){
-
-            $name= time() . $file->getClientOriginalName();
-            $file->move('images',$name);
-
-            $photo =Photo::create(['file'=>$name]);
-            $input['photo_id']=$photo->id;
+        {
+            //
+            $post=Post::findOrFail($id);
+           // $posts=Post::findOrFail($id);
+            return view('welcome',compact('post'));
         }
+
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+    public function edit($id)
+        {
+
+
+            $post= Post::findOrFail($id);
+            $categories=Category::lists('name','id')->all();
+            return view('admin.posts.edit',compact('post','categories'));
+        }
+
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+    public function update(Request $request, $id)
+        {
+            //
+
+
+            Session::flash('Updated_post','The post has been updated');
+            $post= Post::findOrFail($id);
+            $input= $request->all();
+            if($file= $request->file('photo_id')){
+
+                $name= time() . $file->getClientOriginalName();
+                $file->move('images',$name);
+
+                $photo =Photo::create(['file'=>$name]);
+                $input['photo_id']=$photo->id;
+            }
 
         $post->update($input);
         return redirect('/admin/posts');
 
-//        $input=$request->all();
-//        if($file=$request->file('photo_id')){
-//            $name=time().$file->getClientOriginalName();
-//            $file->move('images',$name);
-//            $photo = Photo::create(['file'=>$name]);
-//            $input['photo_id'] = $photo->id;
-//
-//        }
-//
-//        var_dump($input);
-//       Auth::user()->posts()->whereId($id)->first()->update($input);
-//        return redirect('/admin/posts');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
     public function destroy($id)
-    {
-        //
+        {
+            //
 
-        $post=Post::findOrFail($id)->delete();
-        //unlink(public_path().$post->photo->file);
+            $post=Post::findOrFail($id)->delete();
+            //unlink(public_path().$post->photo->file);
 
-        Session::flash('Deleted_post','The user has been deleted');
-        $post->delete();
-        return redirect('/admin/posts');
-    }
-
-
-    public function post($id){
-
-        $post=Post::findOrfail($id);
-        $comments = $post->comments()->whereIsActive(1)->get();
+            Session::flash('Deleted_post','The user has been deleted');
+            $post->delete();
+            return redirect('/admin/posts');
+        }
 
 
-        return view('post',compact('post','comments'));
-    }
+    public function post($id)
+        {
+
+            $post=Post::findOrfail($id);
+            $comments = $post->comments()->whereIsActive(1)->get();
+
+
+            return view('post',compact('post','comments'));
+        }
 
 }

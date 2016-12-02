@@ -109,16 +109,6 @@
                         </ul>
                     </div>
                     <div class="col-lg-6">
-                        {{--<ul class="list-unstyled">--}}
-                            {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#">{{$post->category->name}}</a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
                     </div>
                 </div>
                 <!-- /.row -->
